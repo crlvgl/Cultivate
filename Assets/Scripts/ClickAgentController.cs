@@ -7,6 +7,10 @@ public class ClickAgentController : MonoBehaviour
 {
     private Vector3 target;
 
+    [Header("Camera Settings")]
+    public int PlayerControl = 4;
+    public float PlayerControl1Distance = 1f;
+
     // import agent component
     NavMeshAgent agent;
 
@@ -31,12 +35,45 @@ public class ClickAgentController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (PlayerControl == 1)
+            {
+                Vector3 direction = (Input.mousePosition - this.transform.position).normalized;
+                target = this.transform.position + direction * PlayerControl1Distance; 
+            }
+
+            if (PlayerControl == 4)
+            {
+                target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            }
         }
     }
 
     void MoveAgent()
     {
-        agent.SetDestination(new Vector3(target.x, target.y, transform.position.z));
+        if (PlayerControl == 0)
+        {
+            
+        }
+
+        if (PlayerControl == 1)
+        {
+            agent.SetDestination(new Vector3(target.x, target.y, transform.position.z));   
+        }
+
+        if (PlayerControl == 2)
+        {
+            
+        }
+
+        if (PlayerControl == 3)
+        {
+            
+        }
+
+        if (PlayerControl == 4)
+        {
+            agent.SetDestination(new Vector3(target.x, target.y, transform.position.z));
+        }
+        
     }
 }
