@@ -5,11 +5,15 @@ using UnityEngine.AI;
 
 public class ClickAgentController : MonoBehaviour
 {
-    private Vector3 target;
+    private Vector2 target;
+    private Ray2D ray;
+    private float walkingDistance;
 
-    [Header("Camera Settings")]
+    [Header("Player Control")]
     public int PlayerControl = 4;
-    public float PlayerControl1Distance = 1f;
+    public float walkingDistance1 = 20.0f;
+    public float walkingDistance2 = 30.0f;
+    public float walkingDistance3 = 40.0f;
 
     // import agent component
     NavMeshAgent agent;
@@ -28,52 +32,61 @@ public class ClickAgentController : MonoBehaviour
     void Update()
     {
         SetTargetPosition();
+        FindTarget();
         MoveAgent();
+    }
+
+    void FixedUpdate()
+    {
+        
     }
 
     void SetTargetPosition()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (PlayerControl == 1)
-            {
-                Vector3 direction = (Input.mousePosition - this.transform.position).normalized;
-                target = this.transform.position + direction * PlayerControl1Distance; 
-            }
-
-            if (PlayerControl == 4)
-            {
-                target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            }
+            target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Debug.Log("original target: " + target);
+            Debug.Log("position: " + transform.position);
+            Debug.Log("true distance: " + Vector2.Distance(transform.position, target));
         }
     }
 
     void MoveAgent()
     {
-        if (PlayerControl == 0)
-        {
-            
-        }
+        // Debug.Log("target: " + target + " position: " + transform.position);
+        agent.SetDestination(new Vector3(target.x, target.y, transform.position.z));
+    }
 
+    void FindTarget()
+    {
         if (PlayerControl == 1)
         {
-            agent.SetDestination(new Vector3(target.x, target.y, transform.position.z));   
+            walkingDistance = walkingDistance1;
         }
 
-        if (PlayerControl == 2)
+        else if (PlayerControl == 2)
         {
-            
+            walkingDistance = walkingDistance2;
         }
 
-        if (PlayerControl == 3)
+        else if (PlayerControl == 3)
         {
-            
+            walkingDistance = walkingDistance3;
         }
 
-        if (PlayerControl == 4)
+        else if (PlayerControl == 4)
         {
-            agent.SetDestination(new Vector3(target.x, target.y, transform.position.z));
+            walkingDistance = Mathf.Infinity;
         }
         
+        if (Vector2.Distance(transform.position, target) > walkingDistance)
+            {
+                ray = new Ray2D(transform.position, target);
+                target = ray.GetPoint(walkingDistance);
+                Debug.Log("new target: " + target);
+                Debug.Log("ray: " + ray);
+                Debug.Log("disstance: " + Vector2.Distance(transform.position, target));
+            }
     }
 }

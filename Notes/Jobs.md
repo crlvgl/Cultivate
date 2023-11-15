@@ -2,9 +2,9 @@
 
 ## Julian
 
-+ Kamera
-
 + Spieler zögert auf Click
+
++ Player agiert autonom ohne Interaktion
 
 ## Marie
 
@@ -21,5 +21,7 @@
 + Animation on click
 
 + Spieler realisiert rascheln
+
++ proximity interaction
 
 # 
