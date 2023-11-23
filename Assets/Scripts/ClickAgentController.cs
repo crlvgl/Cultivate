@@ -11,10 +11,14 @@ public class ClickAgentController : MonoBehaviour
     private IEnumerator moveToRandomPositionCoroutine;
     private int PlayerControlCache;
     private Vector2 centerPoint;
+    private List<Vector3> tempcoordinates;
+    public bool pressedButton = true;
+    private Coroutine timerCoroutine;
 
-    private List<Vector3> coordinates;
+    private List<Vector3> allCoordinates;
     private Vector3 lastPosition;
     private string developerInfo = ""; // Information to display on screen
+    private string developerInfo2 = "";
 
     [Header("Player Control")]
     public int PlayerControl = 4;
@@ -25,7 +29,7 @@ public class ClickAgentController : MonoBehaviour
     [Header("Player AI Settings")]
     public float CameraX = 5f;
     public float CameraY = 2.5f;
-    public bool PlayerAi = true;
+    public bool PlayerAi = false;
     public bool developerMode = true;
     
 
@@ -42,11 +46,11 @@ public class ClickAgentController : MonoBehaviour
         agent.updateUpAxis = false;
 
         // Besondere Punkte auf der Map zu denen der Spieler laufen soll
-        coordinates = new List<Vector3>();
-        coordinates.Add(new Vector3(-2, 2, 0));
-        coordinates.Add(new Vector3(1, 1, 0));
-        coordinates.Add(new Vector3(2, 1, 0));
-        coordinates.Add(new Vector3(1, -1, 0));
+        allCoordinates = new List<Vector3>();
+        allCoordinates.Add(new Vector3(-2, 2, 0));
+        allCoordinates.Add(new Vector3(1, 1, 0));
+        allCoordinates.Add(new Vector3(2, 1, 0));
+        allCoordinates.Add(new Vector3(1, -1, 0));
 
         CalculateCenterPoint();
     }
@@ -58,6 +62,17 @@ public class ClickAgentController : MonoBehaviour
         FindTarget();
         MoveAgent();
         ManageMovementCoroutine();
+
+        // Check if any key or mouse button is pressed
+        if (Input.anyKeyDown || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2))
+        {
+            // Start or restart the timer when a button is pressed
+            if (timerCoroutine != null)
+            {
+                StopCoroutine(timerCoroutine);
+            }
+            timerCoroutine = StartCoroutine(ButtonPressedTimer());
+        }
     }
 
     void FixedUpdate()
@@ -114,35 +129,38 @@ public class ClickAgentController : MonoBehaviour
             }
     }
 
-    // Player zwischen den Koordinaten der Liste coordinates hin und her laufen lassen
+    // Player zwischen den Koordinaten der Liste allCoordinates hin und her laufen lassen
     IEnumerator MoveToRandomPosition()
     {
-        int attempts = 0;
-        const int maxAttempts = 10;
         Vector3 newPosition = transform.position;
         while (PlayerAi)
         {   
             CalculateCenterPoint();
-            do
+            tempcoordinates = new List<Vector3>(allCoordinates);
+            List<Vector3> coordinatesToRemove = new List<Vector3>();
+            // Find coordinates that are out of bounds
+            foreach (Vector3 coordinate in tempcoordinates)
             {
-                newPosition = GetRandomPosition();
-                attempts++;
-                if (attempts >= maxAttempts)
+                if (!IsWithinBounds(coordinate))
                 {
-                    Debug.LogWarning("Max attempts reached.");
-                    attempts = 0;
-                    break;
+                    coordinatesToRemove.Add(coordinate);
                 }
             }
-            while(IsWithinBounds(newPosition) == false);
+
+            // Remove the out-of-bounds coordinates
+            foreach (Vector3 coordinate in coordinatesToRemove)
+            {
+                tempcoordinates.Remove(coordinate);
+            }
+
+            newPosition = GetRandomPosition();
 
             int waitTime = Random.Range(3, 5);
-
             if (developerMode)
             {
-                developerInfo = "Moving to: " + newPosition + "\nStay duration: " + waitTime + " seconds\nlastPosition: " + lastPosition + "\nattempts: " + attempts + "\ncenterPoint: " + centerPoint;
+                developerInfo = "Moving to: " + newPosition + "\nStay duration: " + waitTime + " seconds\nlastPosition: " + lastPosition + "\ncenterPoint: " + centerPoint + "\nallCoordinates.Count: " + allCoordinates.Count + "\ntempcoordinates.Count: " + tempcoordinates.Count + "\ncoordinatesToRemove.Count: " + coordinatesToRemove.Count;
             }
-            attempts = 0;
+
             // Move to the new position
             
             target = newPosition;
@@ -184,16 +202,17 @@ public class ClickAgentController : MonoBehaviour
         if (developerMode)
         {
             GUI.Label(new Rect(10, 10, 300, 200), developerInfo);
+            GUI.Label(new Rect(900, 10, 300, 200), developerInfo2);
         }
     }
 
-    // Random Position aus der Liste coordinates suchen
+    // Random Position aus der Liste allCoordinates suchen
     Vector3 GetRandomPosition()
     {
         Vector3 newPosition;
         do
         {
-            newPosition = coordinates[Random.Range(0, coordinates.Count)];
+            newPosition = tempcoordinates[Random.Range(0, tempcoordinates.Count)];
         }
         while (newPosition == lastPosition);
         lastPosition = newPosition;
@@ -214,6 +233,26 @@ public class ClickAgentController : MonoBehaviour
     {
         return position.x >= (centerPoint.x - CameraX) && position.x <= (centerPoint.x + CameraX) &&
             position.y >= (centerPoint.y - CameraY) && position.y <= (centerPoint.y + CameraY);
+    }
+
+    IEnumerator ButtonPressedTimer()
+    {
+        // Set pressedButton to true and wait for 60 seconds
+        pressedButton = true;
+        PlayerAi = false;
+        if (developerMode)
+            {
+                developerInfo2 ="pressedButton = " + pressedButton;
+            }
+        yield return new WaitForSeconds(5);
+
+        // After 60 seconds, set pressedButton to false
+        pressedButton = false;
+        PlayerAi = true;
+        if (developerMode)
+            {
+                developerInfo2 ="pressedButton = " + pressedButton;
+            }
     }
 
 }
