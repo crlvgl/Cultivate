@@ -6,7 +6,8 @@ using UnityEngine.AI;
 public class ClickAgentController : MonoBehaviour
 {
     private Vector2 target;
-    private Ray2D ray;
+    private Vector2 playerPosition;
+    private Vector2 direction;
     private float walkingDistance;
     private IEnumerator moveToRandomPositionCoroutine;
     private int PlayerControlCache;
@@ -85,9 +86,9 @@ public class ClickAgentController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Debug.Log("original target: " + target);
-            Debug.Log("position: " + transform.position);
-            Debug.Log("true distance: " + Vector2.Distance(transform.position, target));
+            //Debug.Log("original target: " + target);
+            //Debug.Log("position: " + transform.position);
+            //Debug.Log("true distance: " + Vector2.Distance(transform.position, target));
         }
     }
 
@@ -118,14 +119,15 @@ public class ClickAgentController : MonoBehaviour
         {
             walkingDistance = Mathf.Infinity;
         }
-        
+
         if (Vector2.Distance(transform.position, target) > walkingDistance)
             {
-                ray = new Ray2D(transform.position, target);
-                target = ray.GetPoint(walkingDistance);
-                Debug.Log("new target: " + target);
-                Debug.Log("ray: " + ray);
-                Debug.Log("disstance: " + Vector2.Distance(transform.position, target));
+                playerPosition = new Vector2(transform.position.x, transform.position.y);
+                direction = target - playerPosition;
+                direction.Normalize();
+                target = playerPosition + (direction * walkingDistance);
+                //Debug.Log("new target: " + target);
+                //Debug.Log("disstance: " + Vector2.Distance(transform.position, target));
             }
     }
 
