@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "com.h8man.2d.navmeshplus": "https://github.com/h8man/NavMeshPlus.git",
+    "com.unity.2d.aseprite": "1.1.0",
     "com.unity.collab-proxy": "2.0.3",
     "com.unity.feature.2d": "1.0.0",
     "com.unity.ide.rider": "3.0.20",
