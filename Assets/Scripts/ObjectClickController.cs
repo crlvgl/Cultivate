@@ -12,6 +12,7 @@ using UnityEngine;
 public class ObjectClickController : MonoBehaviour
 {
     public Animation animate;
+    public bool isClicked = false;
 
     // Start is called before the first frame update
     void Start()
@@ -30,8 +31,18 @@ public class ObjectClickController : MonoBehaviour
         //if not (animate.isPlaying)
         //{
             Debug.Log("Clicked: " + this.name);
+            isClicked = true;
             //animate.Play([name of animation]);
         //}
+        //else
+        //{
+        //    Debug.Log("Animation is already playing");
+        //    isClicked = true;
+        //}
+    }
+    void OnMouseUp()
+    {
+        isClicked = false;
     }
 
 }
