@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+/// <summary>
+/// This script controls the characters movement.
+/// It is used to move the character to the position of the mouse click.
+/// To use this script, the script needs to be attached to the character.
+/// The script also needs a NavMeshAgent component and Navigation Modifier.
+/// </summary>
+
 public class ClickAgentController : MonoBehaviour
 {
     private Vector2 target;
