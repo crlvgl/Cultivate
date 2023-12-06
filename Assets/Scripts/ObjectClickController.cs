@@ -13,6 +13,7 @@ public class ObjectClickController : MonoBehaviour
 {
     public Animation animate;
     public bool isClicked = false;
+    public string animationName;
 
     // Start is called before the first frame update
     void Start()
@@ -28,11 +29,11 @@ public class ObjectClickController : MonoBehaviour
 
     void OnMouseDown()
     {
-        //if not (animate.isPlaying)
+        //if (animate.isPlaying == false)
         //{
             Debug.Log("Clicked: " + this.name);
             isClicked = true;
-            //animate.Play([name of animation]);
+            //animate.Play(animationName);
         //}
         //else
         //{
