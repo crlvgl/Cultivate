@@ -39,6 +39,8 @@ public class ClickAgentController : MonoBehaviour
     public float CameraY = 2.5f;
     public bool PlayerAi = false;
     public bool developerMode = true;
+    public int minWaitTime = 3;
+    public int maxWaitTime = 5;
     
 
     // import agent component
@@ -164,7 +166,7 @@ public class ClickAgentController : MonoBehaviour
 
             newPosition = GetRandomPosition();
 
-            int waitTime = Random.Range(3, 5);
+            int waitTime = Random.Range(minWaitTime, maxWaitTime);
             if (developerMode)
             {
                 developerInfo = "Moving to: " + newPosition + "\nStay duration: " + waitTime + " seconds\nlastPosition: " + lastPosition + "\ncenterPoint: " + centerPoint + "\nallCoordinates.Count: " + allCoordinates.Count + "\ntempcoordinates.Count: " + tempcoordinates.Count + "\ncoordinatesToRemove.Count: " + coordinatesToRemove.Count;

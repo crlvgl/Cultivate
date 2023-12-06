@@ -31,7 +31,7 @@ public class PlayerAISpots : MonoBehaviour
         }
     }
 
-    bool IsWithinBounds(Vector3 position)
+    bool IsWithinBounds(Vector2 position)
     {
         return position.x >= (centerPoint.x - CameraX) && position.x <= (centerPoint.x + CameraX) &&
             position.y >= (centerPoint.y - CameraY) && position.y <= (centerPoint.y + CameraY);
