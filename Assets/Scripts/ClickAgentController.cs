@@ -12,29 +12,30 @@ using UnityEngine.AI;
 
 public class ClickAgentController : MonoBehaviour
 {
-    private Vector2 target;
+    public static Vector2 target;
     private Vector2 playerPosition;
     private Vector2 direction;
     private float walkingDistance;
     private IEnumerator moveToRandomPositionCoroutine;
     private int PlayerControlCache;
     private Vector2 centerPoint;
-    private List<Vector3> tempcoordinates;
+    private List<Vector2> tempcoordinates;
     public bool pressedButton = true;
     private Coroutine timerCoroutine;
+    public static int PlayerControl = 4;
 
-    private List<Vector3> allCoordinates;
+    private List<Vector2> allCoordinates;
     private Vector3 lastPosition;
     private string developerInfo = ""; // Information to display on screen
     private string developerInfo2 = "";
 
     [Header("Player Control")]
-    public int PlayerControl = 4;
     public float walkingDistance1 = 20.0f;
     public float walkingDistance2 = 30.0f;
     public float walkingDistance3 = 40.0f;
 
     [Header("Player AI Settings")]
+    public bool PlayerAiOff = false;
     public float CameraX = 5f;
     public float CameraY = 2.5f;
     public bool PlayerAi = false;
@@ -56,11 +57,11 @@ public class ClickAgentController : MonoBehaviour
         agent.updateUpAxis = false;
 
         // Besondere Punkte auf der Map zu denen der Spieler laufen soll
-        allCoordinates = new List<Vector3>();
-        allCoordinates.Add(new Vector3(-2, 2, 0));
-        allCoordinates.Add(new Vector3(1, 1, 0));
-        allCoordinates.Add(new Vector3(2, 1, 0));
-        allCoordinates.Add(new Vector3(1, -1, 0));
+        allCoordinates = new List<Vector2>();
+        allCoordinates.Add(new Vector2(2, 5));
+        allCoordinates.Add(new Vector2(7, 6));
+        allCoordinates.Add(new Vector2(3, 7));
+        allCoordinates.Add(new Vector2(3, 6));
 
         CalculateCenterPoint();
     }
@@ -147,7 +148,7 @@ public class ClickAgentController : MonoBehaviour
         while (PlayerAi)
         {   
             CalculateCenterPoint();
-            tempcoordinates = new List<Vector3>(allCoordinates);
+            tempcoordinates = new List<Vector2>(allCoordinates);
             List<Vector3> coordinatesToRemove = new List<Vector3>();
             // Find coordinates that are out of bounds
             foreach (Vector3 coordinate in tempcoordinates)
@@ -248,22 +249,26 @@ public class ClickAgentController : MonoBehaviour
 
     IEnumerator ButtonPressedTimer()
     {
-        // Set pressedButton to true and wait for 60 seconds
-        pressedButton = true;
-        PlayerAi = false;
-        if (developerMode)
-            {
-                developerInfo2 ="pressedButton = " + pressedButton;
-            }
-        yield return new WaitForSeconds(5);
+        if (PlayerAiOff == false){
+            // Set pressedButton to true and wait for 60 seconds
+            pressedButton = true;
+            PlayerAi = false;
+            if (developerMode)
+                {
+                    developerInfo2 ="pressedButton = " + pressedButton;
+                }
+            yield return new WaitForSeconds(5);
 
-        // After 60 seconds, set pressedButton to false
-        pressedButton = false;
-        PlayerAi = true;
-        if (developerMode)
-            {
-                developerInfo2 ="pressedButton = " + pressedButton;
-            }
+            // After 60 seconds, set pressedButton to false
+            pressedButton = false;
+            PlayerAi = true;
+            if (developerMode)
+                {
+                    developerInfo2 ="pressedButton = " + pressedButton;
+                }
+
+        }
+        
     }
 
 }
