@@ -12,6 +12,7 @@ public class PlayerReactionPlayer : MonoBehaviour
     public ObjectClickController objectClickController;
     public string animationName = "Reaction";
     private bool playAnimation = false;
+    
     // Start is called before the first frame update
     void Start()
     {
