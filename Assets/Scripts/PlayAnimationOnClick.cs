@@ -4,6 +4,8 @@ using System.Collections;
 public class PlayAnimationOnClick : MonoBehaviour
 {
     public Animator animator; // Referenz zum Animator
+    public bool Woodtimer = false;
+    public float WaitSeconds = 3f;
 
     void Start()
     {
@@ -21,6 +23,9 @@ public class PlayAnimationOnClick : MonoBehaviour
     {
         // Start the coroutine to handle the animation
         StartCoroutine(PlayAnimation());
+        StartCoroutine(CollectWood());
+
+
     }
 
     IEnumerator PlayAnimation()
@@ -32,12 +37,26 @@ public class PlayAnimationOnClick : MonoBehaviour
             animator.enabled = true;
 
             // Wait for 3 seconds
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(WaitSeconds);
 
             // Disable the Animator
             animator.enabled = false;
         }
     }
+
+    IEnumerator CollectWood()
+    {   
+        if (Woodtimer == false)
+        {   
+            Woodtimer = true;
+            Inventory.Wood = Inventory.Wood + 1;
+            yield return new WaitForSeconds(WaitSeconds);
+            Woodtimer = false;
+        }
+        
+    }
+
+
 
     
 }

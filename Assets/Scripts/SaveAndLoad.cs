@@ -7,6 +7,7 @@ public class SaveAndLoad : MonoBehaviour
     private Vector2 playerPosition;
     public Transform playerTransform;
     public Transform cameraTransform;
+    public int Bridge1 = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,30 +19,37 @@ public class SaveAndLoad : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.O)) {
             playerPosition = new Vector2(playerTransform.position.x, playerTransform.position.y);
-            int PlayerControl = ClickAgentController.PlayerControl;
-            int Relic = Inventory.Relic;
             PlayerPrefs.SetFloat("playerPositionX", playerPosition.x);
             PlayerPrefs.SetFloat("playerPositionY", playerPosition.y);
-            PlayerPrefs.SetInt("PlayerControl", PlayerControl);
-            PlayerPrefs.SetInt("Relic", Relic);
+            PlayerPrefs.SetInt("PlayerControl", ClickAgentController.PlayerControl);
+            PlayerPrefs.SetInt("Relic", Inventory.Relic);
+            PlayerPrefs.SetInt("Wood", Inventory.Wood);
+            if (Bridge.Bridge1Unlocked == true)
+            {Bridge1 = 1;}
+            else 
+            {Bridge1 = 0;}
+            PlayerPrefs.SetInt("Bridge1", Bridge1);
         }
 
         if (Input.GetKeyDown(KeyCode.L)) {
+            //Player and Camera position
             float playerPositionX = PlayerPrefs.GetFloat("playerPositionX");
             float playerPositionY = PlayerPrefs.GetFloat("playerPositionY");
-            int PlayerControl = PlayerPrefs.GetInt("PlayerControl");
-            int Relic = PlayerPrefs.GetInt("Relic");
             Vector2 playerPosition = new Vector2(playerPositionX,playerPositionY);
             ClickAgentController.target = playerPosition;
             this.transform.position = playerPosition;
             Vector3 CameraPosition = new Vector3(playerPositionX,playerPositionY,-10f);
             CameraMovement.CameraPosition = CameraPosition;
-            ClickAgentController.PlayerControl = PlayerControl;
+            //everything else
+            ClickAgentController.PlayerControl = PlayerPrefs.GetInt("PlayerControl");
+            Inventory.Relic = PlayerPrefs.GetInt("Relic");
+            Inventory.Wood = PlayerPrefs.GetInt("Wood");
+            Bridge1 = PlayerPrefs.GetInt("Bridge1");
+            if (Bridge1 == 1)
+            {Bridge.Bridge1Unlocked = true;}
+            else
+            {Bridge.Bridge1Unlocked = false;}
         }
     }
 
-    private class SaveObject{
-
-        
-    }
 }
