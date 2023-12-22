@@ -9,7 +9,7 @@ using UnityEngine;
 public class PlayerReactionPlayer : MonoBehaviour
 {
     public Animation animate;
-    public ObjectClickController objectClickController;
+    // public ObjectClickController objectClickController;
     public string animationName = "Reaction";
     private bool playAnimation = false;
     
@@ -22,7 +22,7 @@ public class PlayerReactionPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playAnimation = objectClickController.isClicked;
+        // playAnimation = objectClickController.isClicked;
         if (playAnimation && animate.isPlaying == false)
         {
             animate.Play(animationName);

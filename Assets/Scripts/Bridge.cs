@@ -9,6 +9,8 @@ public class Bridge : MonoBehaviour
     public Transform brokenBridge1Transform;
     public GameObject brokenBridge1;
     public GameObject repairedBridge1;
+    public GameObject player_0;
+    public GameObject player_1;
     public int CostBridge1 = 10;
     public static bool Bridge1Unlocked = false;
 
@@ -58,5 +60,8 @@ public class Bridge : MonoBehaviour
         //Unlock area 2
         brokenBridge1.SetActive(false);
         repairedBridge1.SetActive(true);
+        player_0.SetActive(false);
+        player_1.SetActive(true);
+        player_1.transform.position = player_0.transform.position;
     }
 }
