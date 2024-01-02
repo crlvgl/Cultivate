@@ -29,6 +29,7 @@ public class SaveAndLoad : MonoBehaviour
             else 
             {Bridge1 = 0;}
             PlayerPrefs.SetInt("Bridge1", Bridge1);
+            PlayerPrefs.SetInt("Flower", Inventory.Flower);
         }
 
         if (Input.GetKeyDown(KeyCode.L)) {
@@ -44,6 +45,7 @@ public class SaveAndLoad : MonoBehaviour
             ClickAgentController.PlayerControl = PlayerPrefs.GetInt("PlayerControl");
             Inventory.Relic = PlayerPrefs.GetInt("Relic");
             Inventory.Wood = PlayerPrefs.GetInt("Wood");
+            Inventory.Flower = PlayerPrefs.GetInt("Flower");
             Bridge1 = PlayerPrefs.GetInt("Bridge1");
             if (Bridge1 == 1)
             {Bridge.Bridge1Unlocked = true;}

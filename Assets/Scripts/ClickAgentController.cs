@@ -29,6 +29,8 @@ public class ClickAgentController : MonoBehaviour
     private string developerInfo = ""; // Information to display on screen
     private string developerInfo2 = "";
 
+    public static bool holdStill = false;
+
     [Header("Player Control")]
     public float walkingDistance1 = 20.0f;
     public float walkingDistance2 = 30.0f;
@@ -69,10 +71,14 @@ public class ClickAgentController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SetTargetPosition();
-        FindTarget();
-        MoveAgent();
-        ManageMovementCoroutine();
+       
+        if (holdStill == false)
+        {
+            SetTargetPosition();
+            FindTarget();
+            MoveAgent();
+            ManageMovementCoroutine();
+        }
 
         // Check if any key or mouse button is pressed
         if (Input.anyKeyDown || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2))
@@ -84,6 +90,7 @@ public class ClickAgentController : MonoBehaviour
             }
             timerCoroutine = StartCoroutine(ButtonPressedTimer());
         }
+
     }
 
     void FixedUpdate()
