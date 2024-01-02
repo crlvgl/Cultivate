@@ -33,8 +33,6 @@ public class TreeAnimation : MonoBehaviour
             StartCoroutine(PlayAnimation());
             StartCoroutine(CollectWood());
         }
-
-
     }
 
     IEnumerator PlayAnimation()

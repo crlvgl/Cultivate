@@ -18,7 +18,7 @@ public class UserInterface : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.Label(new Rect(900, 30, 300, 200), "Wood: " + Inventory.Wood.ToString());
+        GUI.Label(new Rect(900, 30, 300, 200), "Wood: " + Inventory.Wood.ToString() + "  Flower: " + Inventory.Flower.ToString());
         if (Bridge.Bridge1Unlocked == true)
         {
             GUI.Label(new Rect(900, 45, 300, 200), "Bridge1 Unlocked");
