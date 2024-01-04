@@ -5,7 +5,8 @@ using UnityEngine;
 public class Relic : MonoBehaviour
 {
 
-    public Transform Player;
+    public GameObject Player1;
+    public GameObject Player2;
     public GameObject RelicGO;
 
     // Start is called before the first frame update
@@ -36,7 +37,19 @@ public class Relic : MonoBehaviour
         
     bool IsPlayerCloseToRelic()
     {
-        float distance = Vector2.Distance(Player.transform.position, this.transform.position);
-        return distance <= 0.5f;
+        if (Player1.activeSelf)
+        {
+            float distance = Vector2.Distance(Player1.transform.position, this.transform.position);
+            return distance <= 0.5f;
+        }
+        else if (Player2.activeSelf)
+        {
+            float distance = Vector2.Distance(Player2.transform.position, this.transform.position);
+            return distance <= 0.5f;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

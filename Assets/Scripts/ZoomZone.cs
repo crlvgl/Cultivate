@@ -4,7 +4,8 @@ public class ZoomZone : MonoBehaviour
 {
     public CameraMovement CameraMovement;
     private bool Zooming = false;
-    public Transform playerTransform;
+    public GameObject player1;
+    public GameObject player2;
    // public static Vector2 Zoomlocation;
 
 
@@ -29,10 +30,21 @@ public class ZoomZone : MonoBehaviour
 
     bool IsInTriggerZone()
     {
-        
-        float distance = Vector2.Distance(playerTransform.position, this.transform.position);
-        //Debug.Log(distance);
-        return distance <= 2f;
-
+        if (player1.activeSelf)
+        {
+            float distance = Vector2.Distance(player1.transform.position, this.transform.position);
+            //Debug.Log(distance);
+            return distance <= 2f;
+        }
+        else if (player2.activeSelf)
+        {
+            float distance = Vector2.Distance(player2.transform.position, this.transform.position);
+            //Debug.Log(distance);
+            return distance <= 2f;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

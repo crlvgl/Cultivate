@@ -6,7 +6,8 @@ public class TreeAnimation : MonoBehaviour
     public Animator animator; // Referenz zum Animator
     public bool Woodtimer = false;
     public float WaitSeconds = 3f;
-    public Transform playerTransform;
+    public GameObject player1;
+    public GameObject player2;
 
     void Start()
     {
@@ -65,10 +66,24 @@ public class TreeAnimation : MonoBehaviour
 
     bool IsPlayerCloseToTheObject()
     {
-        // Get the center of the object
-        Vector2 objectCenter = new Vector2(this.transform.position.x, this.transform.position.y + this.GetComponent<SpriteRenderer>().bounds.size.y / 2);
-        float distance = Vector2.Distance(playerTransform.position, objectCenter);
-        return distance <= 0.3f;
+        if (player1.activeSelf)
+        {
+            // Get the center of the object
+            Vector2 objectCenter = new Vector2(this.transform.position.x, this.transform.position.y + this.GetComponent<SpriteRenderer>().bounds.size.y / 2);
+            float distance = Vector2.Distance(player1.transform.position, objectCenter);
+            return distance <= 0.3f;
+        }
+        else if (player2.activeSelf)
+        {
+            // Get the center of the object
+            Vector2 objectCenter = new Vector2(this.transform.position.x, this.transform.position.y + this.GetComponent<SpriteRenderer>().bounds.size.y / 2);
+            float distance = Vector2.Distance(player2.transform.position, objectCenter);
+            return distance <= 0.3f;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 }
