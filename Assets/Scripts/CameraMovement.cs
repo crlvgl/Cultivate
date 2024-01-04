@@ -75,7 +75,7 @@ public class CameraMovement : MonoBehaviour
             {
                 // Smoothly interpolate towards the zoomScale
                 gameCamera.transform.localScale = Vector3.Lerp(gameCamera.transform.localScale, zoomScale, Time.deltaTime * zoomSpeed);
-                Debug.Log(Time.deltaTime);
+                //Debug.Log(Time.deltaTime);
                 zoomTimer += Time.deltaTime;
             }
             else
@@ -98,7 +98,7 @@ public class CameraMovement : MonoBehaviour
                 gameCamera.transform.localScale = originalScale;
             }
         }
-        Debug.Log(zoomTimer);
+        //Debug.Log(zoomTimer);
     }
 
     public void StartZooming()

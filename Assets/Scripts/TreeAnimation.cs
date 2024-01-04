@@ -5,7 +5,7 @@ public class TreeAnimation : MonoBehaviour
 {
     public Animator animator; // Referenz zum Animator
     public bool Woodtimer = false;
-    public float WaitSeconds = 3f;
+    public static float WaitSeconds = 3f;
     public GameObject player1;
     public GameObject player2;
 
@@ -23,7 +23,7 @@ public class TreeAnimation : MonoBehaviour
 
     void Update()
     {
-        IsPlayerCloseToTheObject();
+        
     }
 
     void OnMouseDown()
@@ -58,8 +58,8 @@ public class TreeAnimation : MonoBehaviour
         if (Woodtimer == false)
         {   
             Woodtimer = true;
-            Inventory.Wood = Inventory.Wood + 1;
             yield return new WaitForSeconds(WaitSeconds);
+            Inventory.Wood = Inventory.Wood + 1;
             Woodtimer = false;
         }
     }
