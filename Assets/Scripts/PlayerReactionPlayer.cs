@@ -9,7 +9,7 @@ using UnityEngine;
 public class PlayerReactionPlayer : MonoBehaviour
 {
     public Animator animator;
-    public int animationTimer = 3;
+    public float animationTimer = 3;
     public static bool react;
     
     // Start is called before the first frame update

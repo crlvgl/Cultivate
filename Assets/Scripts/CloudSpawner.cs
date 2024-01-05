@@ -5,6 +5,7 @@ using UnityEngine;
 public class CloudSpawner : MonoBehaviour
 {
     public GameObject cloudPrefab;
+    public bool limitClouds = true;
     public int maxClouds = 20;
     public int minTimeBetweenSpawns = 1;
     public int maxTimeBetweenSpawns = 10;
@@ -16,6 +17,10 @@ public class CloudSpawner : MonoBehaviour
     
     void Start()
     {
+        if (limitClouds == false)
+        {
+            maxClouds = 1000000;
+        }
         StartCoroutine(SpawnCloudRandomly());
     }
 
