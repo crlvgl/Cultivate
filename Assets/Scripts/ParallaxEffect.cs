@@ -9,9 +9,11 @@ using UnityEngine;
 
 public class ParallaxEffect : MonoBehaviour
 {
-    private float startPos;
-    public float parallaxEffect;
+    public float parallaxEffectX;
+    public float parallaxEffectY;
     public Camera cam;
+    private float startPosX;
+    private float startPosY;
 
     // Start is called before the first frame update
     void Start()
@@ -21,16 +23,17 @@ public class ParallaxEffect : MonoBehaviour
             cam = Camera.main;
         }
         
-        startPos = transform.position.x;
+        startPosX = transform.position.x;
+        startPosY = transform.position.y;
     }
 
     // Update is called once per frame
     void Update()
     {
         Vector3 camPos = cam.transform.position;
-        float temp = camPos.x * (1 - parallaxEffect);
-        float dist = camPos.x * parallaxEffect;
+        float distX = camPos.x * parallaxEffectX;
+        float distY = camPos.y * parallaxEffectY;
 
-        transform.position = new Vector3(startPos + dist, transform.position.y, transform.position.z);
+        transform.position = new Vector3(startPosX + distX, startPosY + distY, transform.position.z);
     }
 }
