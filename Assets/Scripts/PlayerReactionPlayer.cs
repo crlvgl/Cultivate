@@ -8,25 +8,39 @@ using UnityEngine;
 
 public class PlayerReactionPlayer : MonoBehaviour
 {
-    public Animation animate;
-    // public ObjectClickController objectClickController;
-    public string animationName = "Reaction";
-    private bool playAnimation = false;
+    public Animator animator;
+    public int animationTimer = 3;
+    public static bool react;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
+
+        if (animator == null)
+        {
+            Debug.LogError("Animator-Komponente fehlt im GameObject");
+        }
+        else if (animator != null)
+        {
+            animator.enabled = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        // playAnimation = objectClickController.isClicked;
-        if (playAnimation && animate.isPlaying == false)
+        if (react == true && animator != null)
         {
-            animate.Play(animationName);
-            Debug.Log("Reaction Animation is playing");
+            StartCoroutine(PlayAnimation());
         }
     }
+
+    IEnumerator PlayAnimation()
+    {
+        animator.enabled = true;
+        yield return new WaitForSeconds(animationTimer);
+        animator.enabled = false;
+        react = false;
+    }   
 }
