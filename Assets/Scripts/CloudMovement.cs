@@ -21,6 +21,7 @@ public class CloudMovement : MonoBehaviour
         if (transform.position.x == deadZoneX)
         {
             Destroy(gameObject);
+            CloudSpawner.cloudCount--;
         }
     }
 }
