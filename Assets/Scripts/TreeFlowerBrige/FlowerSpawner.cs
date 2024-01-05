@@ -5,21 +5,26 @@ public class FlowerSpawner : MonoBehaviour
 {
     public GameObject flowerPrefab; 
     public int numberOfFlowers = 15;
-    public float waitingTime = 3f;
+    public float waitingTimeMin = 2f;
+    public float waitingTimeMax = 5f;
 
     void Start()
     {
         // Initial spawning of flowers
         StartCoroutine(SpawnFlowersWithDelay());
+        for (int i = 0; i < 9; i++)
+        {
+            SpawnFlower();
+        }
     }
 
     IEnumerator SpawnFlowersWithDelay()
     {
 
-        for (int i = 0; i < numberOfFlowers; i++)
+        for (int i = 0; i < numberOfFlowers -10; i++)
         {
             SpawnFlower();
-            yield return new WaitForSeconds(waitingTime);
+            yield return new WaitForSeconds(Random.Range(waitingTimeMin,waitingTimeMax));
         }
     }
 
@@ -31,7 +36,7 @@ public class FlowerSpawner : MonoBehaviour
     IEnumerator SpawnFlowerWithDelay()
     {
         // Wait for 5 seconds
-        yield return new WaitForSeconds(waitingTime);
+        yield return new WaitForSeconds(Random.Range(waitingTimeMin,waitingTimeMax));
 
         // Spawn a new flower
         SpawnFlower();
