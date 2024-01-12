@@ -3,7 +3,7 @@ using System.Collections;
 
 public class FlowerSpawner : MonoBehaviour
 {
-    public GameObject flowerPrefab; 
+    public GameObject flowerPrefab;
     public int numberOfFlowers = 15;
     public float waitingTimeMin = 2f;
     public float waitingTimeMax = 5f;
@@ -43,7 +43,7 @@ public class FlowerSpawner : MonoBehaviour
     }
 
     // Method to spawn a single flower
-    private void SpawnFlower()
+    public void SpawnFlower()
     {
         Vector2 randomPosition = Random.insideUnitCircle * 1.5f;
         Vector3 spawnPosition = transform.position + new Vector3(randomPosition.x, randomPosition.y, 0);

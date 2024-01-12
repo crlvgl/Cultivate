@@ -29,18 +29,18 @@ public class PlayerReaction : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && DistancePlayerMouse() > WalkingDistance())
             {
                 StartCoroutine(QuestionTimer());
-                Debug.Log("Question");
+                // Debug.Log("Question");
             }
             else if (Input.GetMouseButtonDown(0) && DistancePlayerMouse() < WalkingDistance())
             {
                 StartCoroutine(ExclamationTimer());
-                Debug.Log("Exclamation");
+                // Debug.Log("Exclamation");
             }
         }
         else if (ClickAgentController.PlayerControl == 4 && Input.GetMouseButtonDown(0))
         {
             StartCoroutine(ExclamationTimer());
-            Debug.Log("Exclamation");
+            // Debug.Log("Exclamation");
         }
     }
 

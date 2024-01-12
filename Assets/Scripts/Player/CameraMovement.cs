@@ -32,26 +32,45 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (WASD == true)
+            {
+                WASD = false;
+            }
+            else
+            {
+                WASD = true;
+            }
+        }
         if (WASD == true)
         {
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKeyDown(KeyCode.Y))
             {
-                CameraPosition.y += CameraSpeed / 1000;
+                WASD = false;
+                CameraPosition = GetPlayerPosition();
             }
-            if (Input.GetKey(KeyCode.S))
+            else
             {
-                CameraPosition.y -= CameraSpeed / 1000;
-            }
-            if (Input.GetKey(KeyCode.A))
-            {
-                CameraPosition.x -= CameraSpeed / 1000;
-            }
-            if (Input.GetKey(KeyCode.D))
-            {
-                CameraPosition.x += CameraSpeed / 1000;
-            }
+                if (Input.GetKey(KeyCode.W))
+                {
+                    CameraPosition.y += CameraSpeed / 1000;
+                }
+                if (Input.GetKey(KeyCode.S))
+                {
+                    CameraPosition.y -= CameraSpeed / 1000;
+                }
+                if (Input.GetKey(KeyCode.A))
+                {
+                    CameraPosition.x -= CameraSpeed / 1000;
+                }
+                if (Input.GetKey(KeyCode.D))
+                {
+                    CameraPosition.x += CameraSpeed / 1000;
+                }
 
-            this.transform.position = CameraPosition;
+                this.transform.position = CameraPosition;
+            }
         }
         else
         {
@@ -111,5 +130,14 @@ public class CameraMovement : MonoBehaviour
     {
         isZooming = false;
         zoomTimer = 0f; // Reset the timer
+    }
+
+    Vector3 GetPlayerPosition()
+    {
+        Vector3 safePosition = new Vector3(0f, 0f, 0f);
+        safePosition.x = GameObject.FindWithTag("Player").transform.position.x;
+        safePosition.y = GameObject.FindWithTag("Player").transform.position.y;
+        safePosition.z = this.transform.position.z;
+        return safePosition;
     }
 }
