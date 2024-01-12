@@ -41,7 +41,6 @@ public class TreeAnimation : MonoBehaviour
         if (animator != null)
         {
             ClickAgentController.holdStill = true;
-            PlayerReactionPlayer.react = true;
             // Enable the Animator
             animator.enabled = true;
 

@@ -12,7 +12,7 @@ public class DestroyTrees : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        clicksRequired -= 1;
     }
 
     void Update()

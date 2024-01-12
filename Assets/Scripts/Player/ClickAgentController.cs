@@ -22,7 +22,6 @@ public class ClickAgentController : MonoBehaviour
     private List<Vector2> tempcoordinates;
     public bool pressedButton = true;
     private Coroutine timerCoroutine;
-    public static int PlayerControl = 4;
 
     private List<Vector2> allCoordinates;
     private Vector3 lastPosition;
@@ -32,9 +31,14 @@ public class ClickAgentController : MonoBehaviour
     public static bool holdStill = false;
 
     [Header("Player Control")]
-    public float walkingDistance1 = 20.0f;
-    public float walkingDistance2 = 30.0f;
-    public float walkingDistance3 = 40.0f;
+    public int PlayerControlSetting = 4;
+    public static int PlayerControl;
+    public float walkingDistance1Setting = 20.0f;
+    public static float walkingDistance1;
+    public float walkingDistance2Setting = 30.0f;
+    public static float walkingDistance2;
+    public float walkingDistance3Setting = 40.0f;
+    public static float walkingDistance3;
 
     [Header("Player AI Settings")]
     public bool PlayerAiOff = false;
@@ -52,6 +56,10 @@ public class ClickAgentController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerControl = PlayerControlSetting;
+        walkingDistance1 = walkingDistance1Setting;
+        walkingDistance2 = walkingDistance2Setting;
+        walkingDistance3 = walkingDistance3Setting;
         // import agent component
         agent = GetComponent<NavMeshAgent>();
         // prevent Unity from turning agent out of 2d plane
@@ -111,6 +119,21 @@ public class ClickAgentController : MonoBehaviour
 
     void MoveAgent()
     {
+        if (target != null && target != new Vector2(this.transform.position.x, this.transform.position.y))
+        {
+            StartCoroutine(WaitWhilePopupBeforeWalking());
+        }
+        else
+        {
+            // Debug.Log("target: " + target + " position: " + transform.position);
+            agent.SetDestination(new Vector3(target.x, target.y, transform.position.z));
+        }
+    }
+
+    IEnumerator WaitWhilePopupBeforeWalking()
+    {
+        // Debug.Log(PlayerReaction.popupTimer);
+        yield return new WaitForSeconds((PlayerReaction.popupTimer/2));
         // Debug.Log("target: " + target + " position: " + transform.position);
         agent.SetDestination(new Vector3(target.x, target.y, transform.position.z));
     }
