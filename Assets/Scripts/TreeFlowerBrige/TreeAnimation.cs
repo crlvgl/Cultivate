@@ -8,6 +8,7 @@ public class TreeAnimation : MonoBehaviour
     public static float WaitSeconds = 3f;
     public GameObject player1;
     public GameObject player2;
+    public static bool chopExhausted = false;
 
     void Start()
     {
@@ -28,11 +29,18 @@ public class TreeAnimation : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (ClickAgentController.holdStill == false && IsPlayerCloseToTheObject() == true) // to make sure only one tree at a time is klicked
+        if (chopExhausted == false)
         {
-            // Start the coroutine to handle the animation
-            StartCoroutine(PlayAnimation());
-            StartCoroutine(CollectWood());
+            if (ClickAgentController.holdStill == false && IsPlayerCloseToTheObject() == true) // to make sure only one tree at a time is klicked
+            {
+                // Start the coroutine to handle the animation
+                StartCoroutine(PlayAnimation());
+                StartCoroutine(CollectWood());
+            }
+        }
+        else if (chopExhausted == true)
+        {
+            Debug.Log("Exhausted, can't chop anymore");
         }
     }
 
@@ -60,6 +68,7 @@ public class TreeAnimation : MonoBehaviour
             Woodtimer = true;
             yield return new WaitForSeconds(WaitSeconds);
             Inventory.Wood = Inventory.Wood + 1;
+            Exhaustion.treesChopped += 1;
             Woodtimer = false;
         }
     }

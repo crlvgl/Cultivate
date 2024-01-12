@@ -6,6 +6,7 @@ public class Flower : MonoBehaviour
 {
     public Transform playerTransform;
     public FlowerSpawner flowerSpawner;
+    public static bool flowerExhausted = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,14 @@ public class Flower : MonoBehaviour
     {
         if (IsPlayerCloseToTheObject() == true) 
         {
-            CollectFlower();
+            if (flowerExhausted == false)
+            {
+                CollectFlower();
+            }
+            else if (flowerExhausted == true)
+            {
+                Debug.Log("Exhausted, can't pick anymore");
+            }
         }
     }
     
@@ -36,6 +44,7 @@ public class Flower : MonoBehaviour
     {
         Destroy(gameObject);  // Destroy the flower game object
         Inventory.Flower += 1;
+        Exhaustion.flowersPicked += 1;
 
         if (flowerSpawner != null)
         {

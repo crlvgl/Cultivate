@@ -121,6 +121,7 @@ public class ClickAgentController : MonoBehaviour
     {
         if (target != null && target != new Vector2(this.transform.position.x, this.transform.position.y))
         {
+            Exhaustion.distanceWalked += Vector2.Distance(transform.position, target);
             StartCoroutine(WaitWhilePopupBeforeWalking());
         }
         else
