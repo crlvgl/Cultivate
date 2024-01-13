@@ -9,11 +9,18 @@ public class TreeAnimation : MonoBehaviour
     public GameObject player1;
     public GameObject player2;
     public static bool chopExhausted = false;
+    private TreeProgressBar treeProgressBar;
+
 
     void Start()
     {
         // Animator-Komponente erhalten
         animator = GetComponent<Animator>();
+        treeProgressBar = GetComponentInChildren<TreeProgressBar>();
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
 
         // Sicherstellen, dass eine Animator-Komponente vorhanden ist
         if (animator == null)
@@ -29,13 +36,14 @@ public class TreeAnimation : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (chopExhausted == false)
+        if (chopExhausted == false && Inventory.Relic == 1)
         {
             if (ClickAgentController.holdStill == false && IsPlayerCloseToTheObject() == true) // to make sure only one tree at a time is klicked
             {
                 // Start the coroutine to handle the animation
                 StartCoroutine(PlayAnimation());
                 StartCoroutine(CollectWood());
+                StartCoroutine(ProgressBar());
             }
         }
         else if (chopExhausted == true)
@@ -58,6 +66,24 @@ public class TreeAnimation : MonoBehaviour
             // Disable the Animator
             animator.enabled = false;
             ClickAgentController.holdStill = false;
+        }
+    }
+
+    IEnumerator ProgressBar()
+    {
+        if (treeProgressBar != null)
+        {
+            foreach (Transform child in transform)
+            {
+                child.gameObject.SetActive(true);
+            }
+            treeProgressBar.Progress(1f);
+            yield return new WaitForSeconds(WaitSeconds);
+            foreach (Transform child in transform)
+            {
+                child.gameObject.SetActive(false);
+            }
+            treeProgressBar.resetProgress();
         }
     }
 

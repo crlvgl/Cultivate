@@ -27,7 +27,7 @@ public class Flower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsPlayerCloseToTheObject() == true) 
+        if (IsPlayerCloseToTheObject() == true && Inventory.Altar == 1) 
         {
             if (flowerExhausted == false)
             {

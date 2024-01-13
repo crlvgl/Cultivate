@@ -30,6 +30,8 @@ public class SaveAndLoad : MonoBehaviour
             {Bridge1 = 0;}
             PlayerPrefs.SetInt("Bridge1", Bridge1);
             PlayerPrefs.SetInt("Flower", Inventory.Flower);
+            PlayerPrefs.SetInt("Altar", Inventory.Altar);
+            PlayerPrefs.SetInt("Exhaustion", Exhaustion.exhaustionPoints);
         }
 
         if (Input.GetKeyDown(KeyCode.L)) {
@@ -51,6 +53,8 @@ public class SaveAndLoad : MonoBehaviour
             {Bridge.Bridge1Unlocked = true;}
             else
             {Bridge.Bridge1Unlocked = false;}
+            Inventory.Altar = PlayerPrefs.GetInt("Altar");
+            Exhaustion.exhaustionPoints = PlayerPrefs.GetInt("Exhaustion");
         }
     }
 

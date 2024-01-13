@@ -31,5 +31,11 @@ public class UserInterface : MonoBehaviour
         {
             GUI.Label(new Rect(900, 60, 300, 200), "Woohoo Relic");
         }
+        if (Inventory.Altar == 1)
+        {
+            GUI.Label(new Rect(900, 75, 300, 200), "Altar unlocked");
+        }
+        GUI.Label(new Rect(900, 90, 300, 200), "exhaustionPoints: " + Exhaustion.exhaustionPoints);
+        
     }
 }
