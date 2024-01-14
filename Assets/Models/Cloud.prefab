@@ -113,5 +113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f95ad0264c76f34a955a99f416f056c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxEffect: 0.05
+  parallaxEffectX: 0
+  parallaxEffectY: 0
   cam: {fileID: 0}
