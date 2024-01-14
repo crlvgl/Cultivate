@@ -90,6 +90,7 @@ public class TreeAnimation : MonoBehaviour
         {
             child.gameObject.SetActive(false);
         }
+        treeProgressBar.resetProgress();
     }
 
     IEnumerator CollectWood()
