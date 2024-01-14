@@ -54,19 +54,47 @@ public class CameraMovement : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.W))
                 {
-                    CameraPosition.y += CameraSpeed / 1000;
+                    if (Input.GetKey(KeyCode.LeftShift))
+                    {
+                        CameraPosition.y += CameraSpeed / 500;
+                    }
+                    else
+                    {
+                        CameraPosition.y += CameraSpeed / 1000;
+                    }
                 }
                 if (Input.GetKey(KeyCode.S))
                 {
-                    CameraPosition.y -= CameraSpeed / 1000;
+                    if (Input.GetKey(KeyCode.LeftShift))
+                    {
+                        CameraPosition.y -= CameraSpeed / 500;
+                    }
+                    else
+                    {
+                        CameraPosition.y -= CameraSpeed / 1000;
+                    }
                 }
                 if (Input.GetKey(KeyCode.A))
                 {
-                    CameraPosition.x -= CameraSpeed / 1000;
+                    if (Input.GetKey(KeyCode.LeftShift))
+                    {
+                        CameraPosition.x -= CameraSpeed / 500;
+                    }
+                    else
+                    {
+                        CameraPosition.x -= CameraSpeed / 1000;
+                    }
                 }
                 if (Input.GetKey(KeyCode.D))
                 {
-                    CameraPosition.x += CameraSpeed / 1000;
+                    if (Input.GetKey(KeyCode.LeftShift))
+                    {
+                        CameraPosition.x += CameraSpeed / 500;
+                    }
+                    else
+                    {
+                        CameraPosition.x += CameraSpeed / 1000;
+                    }
                 }
 
                 this.transform.position = CameraPosition;

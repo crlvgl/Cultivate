@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class UserInterface : MonoBehaviour
 {
+    int windowHeight = 200;
+    int windowWidth = 300;
+    int windowLeftAlignment;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,24 +21,25 @@ public class UserInterface : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.Label(new Rect(900, 30, 300, 200), "Wood: " + Inventory.Wood.ToString() + "  Flower: " + Inventory.Flower.ToString());
+        windowLeftAlignment = (Screen.width / 2) - (windowWidth / 2);
+        GUI.Label(new Rect(windowLeftAlignment, 30, windowWidth, windowHeight), "Wood: " + Inventory.Wood.ToString() + "  Flower: " + Inventory.Flower.ToString());
         if (Bridge.Bridge1Unlocked == true)
         {
-            GUI.Label(new Rect(900, 45, 300, 200), "Bridge1 Unlocked");
+            GUI.Label(new Rect(windowLeftAlignment, 45, windowWidth, windowHeight), "Bridge1 Unlocked");
         }
         else
         {
-            GUI.Label(new Rect(900, 45, 300, 200), "Bridge1 Locked");
+            GUI.Label(new Rect(windowLeftAlignment, 45, windowWidth, windowHeight), "Bridge1 Locked");
         }
         if (Inventory.Relic == 1)
         {
-            GUI.Label(new Rect(900, 60, 300, 200), "Woohoo Relic");
+            GUI.Label(new Rect(windowLeftAlignment, 60, windowWidth, windowHeight), "Woohoo Relic");
         }
         if (Inventory.Altar == 1)
         {
-            GUI.Label(new Rect(900, 75, 300, 200), "Altar unlocked");
+            GUI.Label(new Rect(windowLeftAlignment, 75, windowWidth, windowHeight), "Altar unlocked");
         }
-        GUI.Label(new Rect(900, 90, 300, 200), "exhaustionPoints: " + Exhaustion.exhaustionPoints);
+        GUI.Label(new Rect(windowLeftAlignment, 90, windowWidth, windowHeight), "exhaustionPoints: " + Exhaustion.exhaustionPoints);
         
     }
 }
