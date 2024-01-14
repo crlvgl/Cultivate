@@ -31,7 +31,7 @@ public class SaveAndLoad : MonoBehaviour
             PlayerPrefs.SetInt("Bridge1", Bridge1);
             PlayerPrefs.SetInt("Flower", Inventory.Flower);
             PlayerPrefs.SetInt("Altar", Inventory.Altar);
-            PlayerPrefs.SetInt("Exhaustion", Exhaustion.exhaustionPoints);
+            PlayerPrefs.SetFloat("Exhaustion", Exhaustion.exhaustionPoints);
         }
 
         if (Input.GetKeyDown(KeyCode.L)) {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Exhaustion : MonoBehaviour
 {
-    public static int exhaustionPoints = 100;
+    public static float exhaustionPoints = 100;
     public static float distanceWalked = 0;
     public static int treesChopped = 0;
     public static int flowersPicked = 0;
@@ -23,7 +23,7 @@ public class Exhaustion : MonoBehaviour
     public int recovery1 = 30;
     public int exhaustion1 = 50;
     public int slowdonFactor = 3;
-    private bool devMode = false;
+    public bool devMode = false;
 
     private float referenceSpeed;
     private float slowSpeed;
