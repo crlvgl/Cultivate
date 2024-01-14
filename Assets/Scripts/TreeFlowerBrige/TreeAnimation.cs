@@ -17,10 +17,7 @@ public class TreeAnimation : MonoBehaviour
         // Animator-Komponente erhalten
         animator = GetComponent<Animator>();
         treeProgressBar = GetComponentInChildren<TreeProgressBar>();
-        foreach (Transform child in transform)
-        {
-            child.gameObject.SetActive(false);
-        }
+        DeactivateProgressBar();
 
         // Sicherstellen, dass eine Animator-Komponente vorhanden ist
         if (animator == null)
@@ -84,6 +81,14 @@ public class TreeAnimation : MonoBehaviour
                 child.gameObject.SetActive(false);
             }
             treeProgressBar.resetProgress();
+        }
+    }
+
+    public void DeactivateProgressBar()
+    {
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
         }
     }
 

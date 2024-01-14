@@ -9,10 +9,12 @@ public class DestroyTrees : MonoBehaviour
     public GameObject player2;
     public bool needsActivation = false;
     public int clicks = 0;
+    private TreeAnimation treeAnimation;
     // Start is called before the first frame update
     void Start()
     {
         clicksRequired -= 1;
+        treeAnimation = GetComponentInChildren<TreeAnimation>();
     }
 
     void Update()
@@ -43,6 +45,7 @@ public class DestroyTrees : MonoBehaviour
         needsActivation = true;
         this.gameObject.SetActive(false);
         Inventory.Wood = Inventory.Wood + 1;
+        treeAnimation.DeactivateProgressBar();
     }
 
     bool IsPlayerCloseToTheObject()
