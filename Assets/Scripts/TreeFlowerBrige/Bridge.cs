@@ -69,6 +69,7 @@ public class Bridge : MonoBehaviour
         player_1.SetActive(true);
         player_1.transform.position = player_0.transform.position;
         ResetFlowers();
+        DevMode.activateSprintV2 = true;
     }
 
     void ResetFlowers()

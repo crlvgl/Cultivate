@@ -10,9 +10,20 @@ public class DestroyTrees : MonoBehaviour
     public bool needsActivation = false;
     public int clicks = 0;
     private TreeAnimation treeAnimation;
+    private int increaseWood;
+
     // Start is called before the first frame update
     void Start()
     {
+        if (DevMode.devMode == true)
+        {
+            increaseWood = 5;
+        }
+        else
+        {
+            increaseWood = 1;
+        }
+        
         clicksRequired -= 1;
         treeAnimation = GetComponentInChildren<TreeAnimation>();
     }
@@ -44,7 +55,7 @@ public class DestroyTrees : MonoBehaviour
         yield return new WaitForSeconds(TreeAnimation.WaitSeconds);
         needsActivation = true;
         this.gameObject.SetActive(false);
-        Inventory.Wood = Inventory.Wood + 1;
+        Inventory.Wood = Inventory.Wood + increaseWood;
         treeAnimation.DeactivateProgressBar();
     }
 

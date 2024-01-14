@@ -10,10 +10,21 @@ public class TreeAnimation : MonoBehaviour
     public GameObject player2;
     public static bool chopExhausted = false;
     private TreeProgressBar treeProgressBar;
+    private int increaseWood;
 
 
     void Start()
     {
+        if (DevMode.devMode == true)
+        {
+            WaitSeconds = 1;
+            increaseWood = 5;
+        }
+        else
+        {
+            increaseWood = 1;
+        }
+
         // Animator-Komponente erhalten
         animator = GetComponent<Animator>();
         treeProgressBar = GetComponentInChildren<TreeProgressBar>();
@@ -99,7 +110,7 @@ public class TreeAnimation : MonoBehaviour
         {   
             Woodtimer = true;
             yield return new WaitForSeconds(WaitSeconds);
-            Inventory.Wood = Inventory.Wood + 1;
+            Inventory.Wood = Inventory.Wood + increaseWood;
             Exhaustion.treesChopped += 1;
             Woodtimer = false;
         }

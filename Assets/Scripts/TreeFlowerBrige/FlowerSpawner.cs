@@ -10,6 +10,12 @@ public class FlowerSpawner : MonoBehaviour
 
     void Start()
     {
+        if (DevMode.devMode == true)
+        {
+            waitingTimeMin = 0;
+            waitingTimeMax = 2;
+        }
+        
         // Initial spawning of flowers
         StartCoroutine(SpawnFlowersWithDelay());
         for (int i = 0; i < 9; i++)

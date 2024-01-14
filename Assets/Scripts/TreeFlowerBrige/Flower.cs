@@ -7,10 +7,20 @@ public class Flower : MonoBehaviour
     public Transform playerTransform;
     public FlowerSpawner flowerSpawner;
     public static bool flowerExhausted = false;
+    private int increaseFlower;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (DevMode.devMode == true)
+        {
+            increaseFlower = 10;
+        }
+        else
+        {
+            increaseFlower = 1;
+        }
+        
         GameObject playerGameObject = GameObject.FindWithTag("Player");
         if (playerGameObject != null)
         {
@@ -43,7 +53,7 @@ public class Flower : MonoBehaviour
     void CollectFlower()
     {
         Destroy(gameObject);  // Destroy the flower game object
-        Inventory.Flower += 1;
+        Inventory.Flower += increaseFlower;
         Exhaustion.flowersPicked += 1;
 
         if (flowerSpawner != null)

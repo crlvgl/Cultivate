@@ -23,7 +23,6 @@ public class Exhaustion : MonoBehaviour
     public int recovery1 = 30;
     public int exhaustion1 = 50;
     public int slowdonFactor = 3;
-    public bool devMode = false;
 
     private float referenceSpeed;
     private float slowSpeed;
@@ -32,7 +31,7 @@ public class Exhaustion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (devMode == true)
+        if (DevMode.devMode == true)
         {
             exhaustionPoints = Mathf.Infinity;
         }

@@ -11,6 +11,12 @@ public class ActivateTrees : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (DevMode.devMode == true)
+        {
+            timeToRespawnMin = 1;
+            timeToRespawnMax = 2;
+        }
+        
         trees = new List<GameObject>();
         foreach (GameObject tree in GameObject.FindGameObjectsWithTag("Tree"))
         {

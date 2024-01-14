@@ -16,7 +16,15 @@ public class PlayerReaction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        popupTimer = popupTimerSetting;
+        if (DevMode.devMode == true)
+        {
+            popupTimer = 0;
+        }
+        else
+        {
+            popupTimer = popupTimerSetting;
+        }
+        
         questionMark = this.transform.Find("QuestionMark").gameObject;
         exclamationMark = this.transform.Find("ExclamationMark").gameObject;
     }
