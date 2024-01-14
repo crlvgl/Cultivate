@@ -74,6 +74,9 @@ public class ClickAgentController : MonoBehaviour
         allCoordinates.Add(new Vector2(3, 6));
 
         CalculateCenterPoint();
+
+        target = new Vector2(this.transform.position.x, this.transform.position.y);
+        MoveAgent();
     }
 
     // Update is called once per frame
