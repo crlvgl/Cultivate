@@ -6,18 +6,24 @@ public class Exhaustion : MonoBehaviour
 {
     public static int exhaustionPoints = 100;
     public static float distanceWalked = 0;
-    public int distanceToExhaustion = 1000;
     public static int treesChopped = 0;
-    public int treesToExhaustion = 5;
     public static int flowersPicked = 0;
+
+    [Header("Exhauster")]
+    public int distanceToExhaustion = 1000;
+    public int treesToExhaustion = 5;
     public int flowersToExhaustion = 15;
 
+    [Header("Player Settings")]
     public GameObject player_0;
     public GameObject player_1;
     private GameObject player;
 
+    [Header("Exhaustion Settings")]
     public int recovery1 = 30;
     public int exhaustion1 = 50;
+    public int slowdonFactor = 3;
+    private bool devMode = false;
 
     private float referenceSpeed;
     private float slowSpeed;
@@ -26,6 +32,10 @@ public class Exhaustion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (devMode == true)
+        {
+            exhaustionPoints = Mathf.Infinity;
+        }
         if (player_0.activeSelf)
         {
             referenceSpeed = player_0.GetComponent<UnityEngine.AI.NavMeshAgent>().speed;
@@ -34,8 +44,8 @@ public class Exhaustion : MonoBehaviour
         {
             referenceSpeed = player_1.GetComponent<UnityEngine.AI.NavMeshAgent>().speed;
         }
-        slowSpeed = referenceSpeed / 3;
-        semislowSpeed = referenceSpeed / Mathf.Sqrt(3);
+        slowSpeed = referenceSpeed / slowdonFactor;
+        semislowSpeed = referenceSpeed / Mathf.Sqrt(slowdonFactor);
     }
 
     // Update is called once per frame
@@ -87,6 +97,7 @@ public class Exhaustion : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D other)
     {
+        Debug.Log("Collision");
         if (other.gameObject.tag == "Home" && exhaustionPoints < 100)
         {
             StartCoroutine(ResetExhaustion());
