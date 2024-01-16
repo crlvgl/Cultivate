@@ -11,6 +11,7 @@ public class CameraMovement : MonoBehaviour
     private Vector3 originalScale;
     private float zoomTimer = 0f;
     private float zoomDuration = 3f;
+    private bool lockOnPlayer = false;
 
 
     public static Vector3 CameraPosition;
@@ -41,6 +42,7 @@ public class CameraMovement : MonoBehaviour
             else
             {
                 WASD = true;
+                lockOnPlayer = false;
             }
         }
         if (WASD == true)
@@ -48,6 +50,7 @@ public class CameraMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Y))
             {
                 WASD = false;
+                lockOnPlayer = true;
                 CameraPosition = GetPlayerPosition();
             }
             else
@@ -100,7 +103,7 @@ public class CameraMovement : MonoBehaviour
                 this.transform.position = CameraPosition;
             }
         }
-        else
+        else if (WASD == false && lockOnPlayer == false)
         {
             if (ClickAgentController.holdStill == false)
             {
@@ -114,7 +117,28 @@ public class CameraMovement : MonoBehaviour
                 // Move towards the stored position smoothly
                 transform.position = Vector3.SmoothDamp(transform.position, CameraPosition, ref Velocity, SmoothTime);
             }
-            
+
+            if (Input.GetKeyDown(KeyCode.Y))
+            {
+                lockOnPlayer = true;
+            }
+        }
+        else if (WASD == false && lockOnPlayer == true)
+        {
+            if (ClickAgentController.holdStill == false)
+            {
+                transform.position = GetPlayerPosition();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Y))
+            {
+                lockOnPlayer = false;
+            }
+            else if (Input.GetKeyDown(KeyCode.Q))
+            {
+                WASD = true;
+                lockOnPlayer = false;
+            }
         }
         if (isZooming) //zoom in
         {
