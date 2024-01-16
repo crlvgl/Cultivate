@@ -18,6 +18,7 @@ public class ClickAgentController : MonoBehaviour
     private float walkingDistance;
     private bool startedWalking = false;
     private float walkingTimer;
+    public static bool isWalking = false;
     private IEnumerator moveToRandomPositionCoroutine;
     private int PlayerControlCache;
     private Vector2 centerPoint;
@@ -94,6 +95,8 @@ public class ClickAgentController : MonoBehaviour
             ManageMovementCoroutine();
         }
 
+        ManageAnimation();
+
         // Check if any key or mouse button is pressed
         if (Input.anyKeyDown || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2))
         {
@@ -167,6 +170,18 @@ public class ClickAgentController : MonoBehaviour
             startedWalking = false;
             Exhaustion.distanceWalked = Time.time - walkingTimer;
             // Debug.Log("Stopped Timer " + Exhaustion.distanceWalked);
+        }
+    }
+
+    void ManageAnimation()
+    {
+        if (target != null && target != new Vector2(this.transform.position.x, this.transform.position.y))
+        {
+            isWalking = true;
+        }
+        else
+        {
+            isWalking = false;
         }
     }
 

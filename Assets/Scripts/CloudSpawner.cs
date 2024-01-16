@@ -26,14 +26,11 @@ public class CloudSpawner : MonoBehaviour
 
     IEnumerator SpawnCloudRandomly()
     {
-        while (true)
-        {
             if (cloudCount <= maxClouds) // if max clouds is reached, Unity crashes !! needs to be fixed !!
             {
                 yield return new WaitForSeconds(Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns));
                 SpawnCloud();
             }
-        }
     }
     
     private void SpawnCloud()

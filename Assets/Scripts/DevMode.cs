@@ -31,7 +31,7 @@ public class DevMode : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (activateSprintV2 == true)
+        if (activateSprintV2 == true && sprintMode == true)
         {
             activateSprintV2 = false;
             player_1.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = player_1.GetComponent<UnityEngine.AI.NavMeshAgent>().speed * 2;

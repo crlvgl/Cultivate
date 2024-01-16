@@ -9,6 +9,7 @@ public class Exhaustion : MonoBehaviour
     public static float exhaustionTimer;
     public static int treesChopped = 0;
     public static int flowersPicked = 0;
+    public static bool playRecoveryAnimation = false;
 
     [Header("Exhauster")]
     [Tooltip("How far the player can walk before exhaustion, in Seconds")]
@@ -31,6 +32,7 @@ public class Exhaustion : MonoBehaviour
     public int slowdownFactor = 3;
     [Tooltip("How long it takes to recover 1 exhaustion point, in Seconds")]
     public int timeToRecovery = 1;
+    public static int recoverViaPetting = 5;
 
     private bool isRecovering = false;
     private bool firstTime = true;
@@ -62,10 +64,6 @@ public class Exhaustion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (HomeCloseToPlayer())
-        {
-            Debug.Log("home is close to player");
-        }
         reduceExhaustionPoints();
         exhaustionEffects();
         FirstRecovery();
@@ -167,13 +165,25 @@ public class Exhaustion : MonoBehaviour
     {
         if (player_0.activeSelf)
         {
-            float distance = Vector2.Distance(player_0.transform.position, playerHome.transform.position+new Vector3(0,0.5f,0));
-            return distance <= 0.3f;
+            if (Vector2.Distance(player_0.transform.position, playerHome.transform.position+new Vector3(0.3f,-0.1f,0)) <= 0.1f || Vector2.Distance(player_0.transform.position, playerHome.transform.position+new Vector3(0f,-0.1f,0)) <= 0.1f || Vector2.Distance(player_0.transform.position, playerHome.transform.position+new Vector3(-0.3f,-0.1f,0)) <= 0.1f)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         else if (player_1.activeSelf)
         {
-            float distance = Vector2.Distance(player_1.transform.position, playerHome.transform.position+new Vector3(0,0.5f,0));
-            return distance <= 0.3f;
+            if (Vector2.Distance(player_1.transform.position, playerHome.transform.position+new Vector3(0.3f,-0.1f,0)) <= 0.1f || Vector2.Distance(player_1.transform.position, playerHome.transform.position+new Vector3(0,-0.1f,0)) <= 0.1f || Vector2.Distance(player_1.transform.position, playerHome.transform.position+new Vector3(-0.3f,-0.1f,0)) <= 0.1f)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         else
         {
@@ -186,12 +196,13 @@ public class Exhaustion : MonoBehaviour
         if (firstTime == false && HomeCloseToPlayer() == false)
         {
             firstTime = true;
+            playRecoveryAnimation = false;
         }
     }
 
     void FirstRecovery()
     {
-        if (firstTime == true && HomeCloseToPlayer() == true && isRecovering == false)
+        if (firstTime == true && HomeCloseToPlayer() == true && isRecovering == false && exhaustionPoints < 100)
         {
             StartCoroutine(FirstRecoveryTimer());
             firstTime = false;
@@ -203,6 +214,7 @@ public class Exhaustion : MonoBehaviour
         isRecovering = true;
         yield return new WaitForSeconds(timeToRecovery*5);
         exhaustionPoints += 1;
+        playRecoveryAnimation = true;
         isRecovering = false;
     }
 }

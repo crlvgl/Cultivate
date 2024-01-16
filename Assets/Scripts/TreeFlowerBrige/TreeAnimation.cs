@@ -11,6 +11,7 @@ public class TreeAnimation : MonoBehaviour
     public static bool chopExhausted = false;
     private TreeProgressBar treeProgressBar;
     private int increaseWood;
+    public static bool choppingTrees = false;
 
 
     void Start()
@@ -67,12 +68,14 @@ public class TreeAnimation : MonoBehaviour
             ClickAgentController.holdStill = true;
             // Enable the Animator
             animator.enabled = true;
+            choppingTrees = true;
 
             // Wait for 3 seconds
             yield return new WaitForSeconds(WaitSeconds);
 
             // Disable the Animator
             animator.enabled = false;
+            choppingTrees = false;
             ClickAgentController.holdStill = false;
         }
     }
