@@ -5,9 +5,8 @@ using UnityEngine;
 public class DevMode : MonoBehaviour
 {
     [Header("Developer Mode Options")]
-    public bool activateDeveloperCheats;
     public bool sprintMode;
-    public static bool devMode;
+    public static bool devMode = false;
     [Header("Requirements")]
     public GameObject player_0;
     public GameObject player_1;
@@ -15,9 +14,7 @@ public class DevMode : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-        devMode = activateDeveloperCheats;
-        
+    {   
         if (sprintMode == true)
         {
             if (player_0.activeSelf)
