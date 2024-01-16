@@ -16,6 +16,8 @@ public class ClickAgentController : MonoBehaviour
     private Vector2 playerPosition;
     private Vector2 direction;
     private float walkingDistance;
+    private bool startedWalking = false;
+    private float walkingTimer;
     private IEnumerator moveToRandomPositionCoroutine;
     private int PlayerControlCache;
     private Vector2 centerPoint;
@@ -88,6 +90,7 @@ public class ClickAgentController : MonoBehaviour
             SetTargetPosition();
             FindTarget();
             MoveAgent();
+            getWalkingTime();
             ManageMovementCoroutine();
         }
 
@@ -124,7 +127,6 @@ public class ClickAgentController : MonoBehaviour
     {
         if (target != null && target != new Vector2(this.transform.position.x, this.transform.position.y))
         {
-            Exhaustion.distanceWalked += Vector2.Distance(transform.position, target);
             StartCoroutine(WaitWhilePopupBeforeWalking());
         }
         else
@@ -140,6 +142,32 @@ public class ClickAgentController : MonoBehaviour
         yield return new WaitForSeconds((PlayerReaction.popupTimer/2));
         // Debug.Log("target: " + target + " position: " + transform.position);
         agent.SetDestination(new Vector3(target.x, target.y, transform.position.z));
+    }
+
+    void getWalkingTime()
+    {
+        if (target != null && target != new Vector2(this.transform.position.x, this.transform.position.y) && startedWalking == false)
+        {
+            walkingTimer = Time.time;
+            startedWalking = true;
+            // Debug.Log("started Timer");
+        }
+        else if (target != null && target != new Vector2(this.transform.position.x, this.transform.position.y) && startedWalking == true)
+        {
+            Exhaustion.distanceWalked = Time.time - walkingTimer;
+            // Debug.Log("Updated Timer " + Exhaustion.distanceWalked);
+            if (Exhaustion.distanceWalked >= Exhaustion.exhaustionTimer)
+            {
+                walkingTimer = Time.time;
+                // Debug.Log("Reset Timer");
+            }
+        }
+        else if (target != null && target == new Vector2(this.transform.position.x, this.transform.position.y) && startedWalking == true)
+        {
+            startedWalking = false;
+            Exhaustion.distanceWalked = Time.time - walkingTimer;
+            // Debug.Log("Stopped Timer " + Exhaustion.distanceWalked);
+        }
     }
 
     void FindTarget()

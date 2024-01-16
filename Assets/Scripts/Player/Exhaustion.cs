@@ -6,11 +6,13 @@ public class Exhaustion : MonoBehaviour
 {
     public static float exhaustionPoints = 100;
     public static float distanceWalked = 0;
+    public static float exhaustionTimer;
     public static int treesChopped = 0;
     public static int flowersPicked = 0;
 
     [Header("Exhauster")]
-    public int distanceToExhaustion = 1000;
+    [Tooltip("How far the player can walk before exhaustion, in Seconds")]
+    public int distanceToExhaustion = 5;
     public int treesToExhaustion = 5;
     public int flowersToExhaustion = 15;
 
@@ -18,11 +20,20 @@ public class Exhaustion : MonoBehaviour
     public GameObject player_0;
     public GameObject player_1;
     private GameObject player;
+    public GameObject playerHome;
 
     [Header("Exhaustion Settings")]
+    [Tooltip("when exhaustion effects will stop to take effect when recovering")]
     public int recovery1 = 30;
+    [Tooltip("when exhaustion effects will start to take effect")]
     public int exhaustion1 = 50;
-    public int slowdonFactor = 3;
+    [Tooltip("How much the player's speed is reduced by")]
+    public int slowdownFactor = 3;
+    [Tooltip("How long it takes to recover 1 exhaustion point, in Seconds")]
+    public int timeToRecovery = 1;
+
+    private bool isRecovering = false;
+    private bool firstTime = true;
 
     private float referenceSpeed;
     private float slowSpeed;
@@ -43,12 +54,29 @@ public class Exhaustion : MonoBehaviour
         {
             referenceSpeed = player_1.GetComponent<UnityEngine.AI.NavMeshAgent>().speed;
         }
-        slowSpeed = referenceSpeed / slowdonFactor;
-        semislowSpeed = referenceSpeed / Mathf.Sqrt(slowdonFactor);
+        slowSpeed = referenceSpeed / slowdownFactor;
+        semislowSpeed = referenceSpeed / Mathf.Sqrt(slowdownFactor);
+        exhaustionTimer = distanceToExhaustion;
     }
 
     // Update is called once per frame
     void Update()
+    {
+        if (HomeCloseToPlayer())
+        {
+            Debug.Log("home is close to player");
+        }
+        reduceExhaustionPoints();
+        exhaustionEffects();
+        FirstRecovery();
+        if (firstTime == false)
+        {
+            recovery();
+        }
+        IsLeaving();
+    }
+
+    void reduceExhaustionPoints()
     {
         if (distanceWalked >= distanceToExhaustion)
         {
@@ -65,7 +93,10 @@ public class Exhaustion : MonoBehaviour
             exhaustionPoints -= 1;
             flowersPicked -= flowersToExhaustion;
         }
+    }
 
+    void exhaustionEffects()
+    {
         if (exhaustionPoints <= 0)
         {
             TreeAnimation.chopExhausted = true;
@@ -94,30 +125,84 @@ public class Exhaustion : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay2D(Collision2D other)
+    void recovery()
     {
-        Debug.Log("Collision");
-        if (other.gameObject.tag == "Home" && exhaustionPoints < 100)
+        if (player_0.activeSelf)
+        {
+            player = player_0;
+        }
+        else if (player_1.activeSelf)
+        {
+            player = player_1;
+        }
+        
+        if (HomeCloseToPlayer() && exhaustionPoints < 100 && isRecovering == false)
         {
             StartCoroutine(ResetExhaustion());
         }
 
-        if (other.gameObject.tag == "Home" && exhaustionPoints > recovery1 && exhaustionPoints < 100)
+        if (HomeCloseToPlayer() && exhaustionPoints > recovery1 && exhaustionPoints < 100)
         {
             TreeAnimation.chopExhausted = false;
             Flower.flowerExhausted = false;
             player.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = semislowSpeed;
         }
-        else if (other.gameObject.tag == "Home" && exhaustionPoints == 100)
+        else if (HomeCloseToPlayer() && exhaustionPoints == 100)
         {
             TreeAnimation.chopExhausted = false;
+            Flower.flowerExhausted = false;
             player.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = referenceSpeed;
         }
     }
 
     IEnumerator ResetExhaustion()
     {
-        yield return new WaitForSeconds(1);
+        isRecovering = true;
+        yield return new WaitForSeconds(timeToRecovery);
         exhaustionPoints += 1;
+        isRecovering = false;
+    }
+
+    bool HomeCloseToPlayer()
+    {
+        if (player_0.activeSelf)
+        {
+            float distance = Vector2.Distance(player_0.transform.position, playerHome.transform.position+new Vector3(0,0.5f,0));
+            return distance <= 0.3f;
+        }
+        else if (player_1.activeSelf)
+        {
+            float distance = Vector2.Distance(player_1.transform.position, playerHome.transform.position+new Vector3(0,0.5f,0));
+            return distance <= 0.3f;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    void IsLeaving()
+    {
+        if (firstTime == false && HomeCloseToPlayer() == false)
+        {
+            firstTime = true;
+        }
+    }
+
+    void FirstRecovery()
+    {
+        if (firstTime == true && HomeCloseToPlayer() == true && isRecovering == false)
+        {
+            StartCoroutine(FirstRecoveryTimer());
+            firstTime = false;
+        }       
+    }
+
+    IEnumerator FirstRecoveryTimer()
+    {
+        isRecovering = true;
+        yield return new WaitForSeconds(timeToRecovery*5);
+        exhaustionPoints += 1;
+        isRecovering = false;
     }
 }

@@ -56,6 +56,7 @@ public class DestroyTrees : MonoBehaviour
         needsActivation = true;
         this.gameObject.SetActive(false);
         Inventory.Wood = Inventory.Wood + increaseWood;
+        Exhaustion.treesChopped++;
         treeAnimation.DeactivateProgressBar();
     }
 
