@@ -10,8 +10,12 @@ public class TreeAnimation : MonoBehaviour
     public GameObject player2;
     public static bool chopExhausted = false;
     private TreeProgressBar treeProgressBar;
+    private GameObject progressBarSlider;
     private int increaseWood;
     public static bool choppingTrees = false;
+    private GameObject sparkle;
+    private bool sparkleOff = false;
+
 
 
     void Start()
@@ -29,6 +33,8 @@ public class TreeAnimation : MonoBehaviour
         // Animator-Komponente erhalten
         animator = GetComponent<Animator>();
         treeProgressBar = GetComponentInChildren<TreeProgressBar>();
+        progressBarSlider = this.transform.GetChild(0).gameObject;
+        sparkle =this.transform.GetChild(1).gameObject;
         DeactivateProgressBar();
 
         // Sicherstellen, dass eine Animator-Komponente vorhanden ist
@@ -40,8 +46,22 @@ public class TreeAnimation : MonoBehaviour
 
     void Update()
     {
-        
+        if(IsPlayerCloseToTheObject())
+        {
+            if (sparkle != null && sparkleOff == false)
+            {
+                sparkle.SetActive(true);
+            }
+        }
+        else
+        {
+            if (sparkle != null)
+            {
+                sparkle.SetActive(false);
+            }
+        }
     }
+        
 
     void OnMouseDown()
     {
@@ -53,6 +73,7 @@ public class TreeAnimation : MonoBehaviour
                 StartCoroutine(PlayAnimation());
                 StartCoroutine(CollectWood());
                 StartCoroutine(ProgressBar());
+
             }
         }
         else if (chopExhausted == true)
@@ -69,6 +90,8 @@ public class TreeAnimation : MonoBehaviour
             // Enable the Animator
             animator.enabled = true;
             choppingTrees = true;
+            sparkle.SetActive(false);
+            sparkleOff = true;
 
             // Wait for 3 seconds
             yield return new WaitForSeconds(WaitSeconds);
@@ -77,6 +100,7 @@ public class TreeAnimation : MonoBehaviour
             animator.enabled = false;
             choppingTrees = false;
             ClickAgentController.holdStill = false;
+            sparkleOff = false;
         }
     }
 
@@ -84,26 +108,17 @@ public class TreeAnimation : MonoBehaviour
     {
         if (treeProgressBar != null)
         {
-            foreach (Transform child in transform)
-            {
-                child.gameObject.SetActive(true);
-            }
+            progressBarSlider.SetActive(true);
             treeProgressBar.Progress(1f);
             yield return new WaitForSeconds(WaitSeconds);
-            foreach (Transform child in transform)
-            {
-                child.gameObject.SetActive(false);
-            }
+            progressBarSlider.SetActive(false);
             treeProgressBar.resetProgress();
         }
     }
 
     public void DeactivateProgressBar()
     {
-        foreach (Transform child in transform)
-        {
-            child.gameObject.SetActive(false);
-        }
+        progressBarSlider.SetActive(false);
         treeProgressBar.resetProgress();
     }
 
