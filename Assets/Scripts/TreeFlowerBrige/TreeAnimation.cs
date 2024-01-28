@@ -46,7 +46,7 @@ public class TreeAnimation : MonoBehaviour
 
     void Update()
     {
-        if(IsPlayerCloseToTheObject())
+        if(IsPlayerCloseToTheObject() && Inventory.Relic != 0)
         {
             if (sparkle != null && sparkleOff == false)
             {
