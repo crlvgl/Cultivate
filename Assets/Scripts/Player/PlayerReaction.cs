@@ -41,13 +41,27 @@ public class PlayerReaction : MonoBehaviour
             }
             else if (Input.GetMouseButtonDown(0) && DistancePlayerMouse() < WalkingDistance())
             {
-                StartCoroutine(ExclamationTimer());
+                if (TreeAnimation.wantsToChop == true && (TreeAnimation.chopExhausted == true || Inventory.Relic == 0))
+                {
+                    StartCoroutine(QuestionTimer());
+                }
+                else
+                {
+                    StartCoroutine(ExclamationTimer());
+                }
                 // Debug.Log("Exclamation");
             }
         }
         else if (ClickAgentController.PlayerControl == 4 && Input.GetMouseButtonDown(0))
         {
-            StartCoroutine(ExclamationTimer());
+            if (TreeAnimation.wantsToChop == true && (TreeAnimation.chopExhausted == true || Inventory.Relic == 0))
+            {
+                StartCoroutine(QuestionTimer());
+            }
+            else
+            {
+                StartCoroutine(ExclamationTimer());
+            }
             // Debug.Log("Exclamation");
         }
     }

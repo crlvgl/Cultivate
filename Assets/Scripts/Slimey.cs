@@ -142,7 +142,7 @@ public class Slimey : MonoBehaviour
         yield return new WaitForSeconds(pettingTime);
         if (100-Exhaustion.recoverViaPetting < Exhaustion.exhaustionPoints && Exhaustion.exhaustionPoints < 100)
         {
-            Exhaustion.exhaustionPoints += 100;
+            Exhaustion.exhaustionPoints = 100;
         }
         else if (Exhaustion.exhaustionPoints < 100-Exhaustion.recoverViaPetting)
         {

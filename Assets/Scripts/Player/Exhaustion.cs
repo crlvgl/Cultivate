@@ -71,6 +71,10 @@ public class Exhaustion : MonoBehaviour
         {
             recovery();
         }
+        if (Exhaustion.exhaustionPoints >= 100)
+        {
+            playRecoveryAnimation = false;
+        }
         IsLeaving();
     }
 
@@ -165,7 +169,7 @@ public class Exhaustion : MonoBehaviour
     {
         if (player_0.activeSelf)
         {
-            if (Vector2.Distance(player_0.transform.position, playerHome.transform.position+new Vector3(0.3f,-0.1f,0)) <= 0.1f || Vector2.Distance(player_0.transform.position, playerHome.transform.position+new Vector3(0f,-0.1f,0)) <= 0.1f || Vector2.Distance(player_0.transform.position, playerHome.transform.position+new Vector3(-0.3f,-0.1f,0)) <= 0.1f)
+            if (Vector2.Distance(player_0.transform.position, playerHome.transform.position+new Vector3(0.3f,0.2f,0)) <= 0.2f || Vector2.Distance(player_0.transform.position, playerHome.transform.position+new Vector3(0f,0.2f,0)) <= 0.2f || Vector2.Distance(player_0.transform.position, playerHome.transform.position+new Vector3(-0.3f,0.2f,0)) <= 0.2f)
             {
                 return true;
             }
@@ -176,7 +180,7 @@ public class Exhaustion : MonoBehaviour
         }
         else if (player_1.activeSelf)
         {
-            if (Vector2.Distance(player_1.transform.position, playerHome.transform.position+new Vector3(0.3f,-0.1f,0)) <= 0.1f || Vector2.Distance(player_1.transform.position, playerHome.transform.position+new Vector3(0,-0.1f,0)) <= 0.1f || Vector2.Distance(player_1.transform.position, playerHome.transform.position+new Vector3(-0.3f,-0.1f,0)) <= 0.1f)
+            if (Vector2.Distance(player_1.transform.position, playerHome.transform.position+new Vector3(0.3f,0.2f,0)) <= 0.2f || Vector2.Distance(player_1.transform.position, playerHome.transform.position+new Vector3(0,0.2f,0)) <= 0.2f || Vector2.Distance(player_1.transform.position, playerHome.transform.position+new Vector3(-0.3f,0.2f,0)) <= 0.2f)
             {
                 return true;
             }

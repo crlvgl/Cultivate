@@ -15,6 +15,7 @@ public class TreeAnimation : MonoBehaviour
     public static bool choppingTrees = false;
     private GameObject sparkle;
     private bool sparkleOff = false;
+    public static bool wantsToChop = false;
 
 
 
@@ -73,6 +74,7 @@ public class TreeAnimation : MonoBehaviour
                 StartCoroutine(PlayAnimation());
                 StartCoroutine(CollectWood());
                 StartCoroutine(ProgressBar());
+                wantsToChop = true;
 
             }
         }
