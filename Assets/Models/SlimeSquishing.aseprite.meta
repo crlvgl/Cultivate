@@ -1,0 +1,277 @@
+fileFormatVersion: 2
+guid: d9fe13aea1eb9c845aea7332c39c0332
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMasterTextureLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: SlimeSquishing_Frame_0
+    originalName: 
+    pivot: {x: 0.5, y: -0.14285715}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 34
+      y: 4
+      width: 20
+      height: 14
+    spriteID: c3acd1b46bfb06449b8960c98016f066
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 34, y: 4}
+  - name: SlimeSquishing_Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: -0.13333334}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 34
+      y: 26
+      width: 18
+      height: 15
+    spriteID: a199fd79d4049b749949f12ffd7a0655
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 34, y: 26}
+  - name: SlimeSquishing_Frame_2
+    originalName: 
+    pivot: {x: 0.49999997, y: -0.15384616}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 26
+      width: 22
+      height: 13
+    spriteID: 2fa74b17974b797489c82aa1049c1401
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 26}
+  - name: SlimeSquishing_Frame_3
+    originalName: 
+    pivot: {x: 0.5, y: -0.19999999}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 34
+      y: 49
+      width: 26
+      height: 10
+    spriteID: 86050a2d654c52345a7a6ee97ab54ff6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 34, y: 49}
+  - name: SlimeSquishing_Frame_4
+    originalName: 
+    pivot: {x: 0.49999997, y: -0.14285715}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 22
+      height: 14
+    spriteID: 22d9daa5a63004446bafce60ce24b501
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: 1029459155
+    name: SlimeSquishing
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: SlimeSquishing_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 3
+        y: 2
+        width: 20
+        height: 14
+      spriteId: c3acd1b46bfb06449b8960c98016f066
+    - name: SlimeSquishing_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 4
+        y: 2
+        width: 18
+        height: 15
+      spriteId: a199fd79d4049b749949f12ffd7a0655
+    - name: SlimeSquishing_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 2
+        y: 2
+        width: 22
+        height: 13
+      spriteId: 2fa74b17974b797489c82aa1049c1401
+    - name: SlimeSquishing_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 0
+        y: 2
+        width: 26
+        height: 10
+      spriteId: 86050a2d654c52345a7a6ee97ab54ff6
+    - name: SlimeSquishing_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 2
+        y: 2
+        width: 22
+        height: 14
+      spriteId: 22d9daa5a63004446bafce60ce24b501
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 26, y: 21}
