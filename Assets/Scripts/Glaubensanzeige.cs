@@ -9,7 +9,7 @@ public class Glaubensanzeige : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        imageRelic = transform.Find("ImageRelic").gameObject;
+        imageRelic = transform.Find("RelicUI/ImageRelic").gameObject;
         if (imageRelic != null)
         {
             imageRelic.SetActive(false);

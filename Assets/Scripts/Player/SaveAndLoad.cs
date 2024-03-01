@@ -54,7 +54,7 @@ public class SaveAndLoad : MonoBehaviour
             else
             {Bridge.Bridge1Unlocked = false;}
             Inventory.Altar = PlayerPrefs.GetInt("Altar");
-            Exhaustion.exhaustionPoints = PlayerPrefs.GetInt("Exhaustion");
+            Exhaustion.exhaustionPoints = PlayerPrefs.GetFloat("Exhaustion");
         }
     }
 

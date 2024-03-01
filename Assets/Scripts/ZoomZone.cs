@@ -30,21 +30,43 @@ public class ZoomZone : MonoBehaviour
 
     bool IsInTriggerZone()
     {
-        if (player1.activeSelf)
+        if(gameObject.name == "ZoomZone_Forest") //special treatment
         {
-            float distance = Vector2.Distance(player1.transform.position, this.transform.position);
-            //Debug.Log(distance);
-            return distance <= 2f;
-        }
-        else if (player2.activeSelf)
-        {
-            float distance = Vector2.Distance(player2.transform.position, this.transform.position);
-            //Debug.Log(distance);
-            return distance <= 2f;
+            if (player1.activeSelf)
+            {
+                float distance = Vector2.Distance(player1.transform.position, new Vector2(4,16));
+                //Debug.Log(distance);
+                return distance <= 4f;
+            }
+            else if (player2.activeSelf)
+            {
+                float distance = Vector2.Distance(player2.transform.position, this.transform.position);
+                //Debug.Log(distance);
+                return distance <= 4f;
+            }
+            else
+            {
+                return false;
+            }
         }
         else
         {
-            return false;
+            if (player1.activeSelf)
+            {
+                float distance = Vector2.Distance(player1.transform.position, this.transform.position);
+                //Debug.Log(distance);
+                return distance <= 2f;
+            }
+            else if (player2.activeSelf)
+            {
+                float distance = Vector2.Distance(player2.transform.position, this.transform.position);
+                //Debug.Log(distance);
+                return distance <= 2f;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

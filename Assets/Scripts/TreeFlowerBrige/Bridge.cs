@@ -14,6 +14,7 @@ public class Bridge : MonoBehaviour
     public int CostBridge1 = 10;
     public static bool Bridge1Unlocked = false;
     public FlowerSpawner flowerSpawner;
+    private GameObject sparkle;
 
     // Start is called before the first frame update
     void Start()
@@ -23,21 +24,31 @@ public class Bridge : MonoBehaviour
         {
             flowerSpawner = spawnerGameObject.GetComponent<FlowerSpawner>();
         }
+        sparkle =this.transform.GetChild(0).gameObject;
     }
 
     bool IsPlayerCloseToTheObject()
     {
         float distance = Vector2.Distance(playerTransform.position, brokenBridge1Transform.position);
-        return distance <= 2.0f;
+        return distance <= 1.5f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (IsPlayerCloseToTheObject())
+        if(IsPlayerCloseToTheObject() && Inventory.Relic != 0 && Inventory.Wood >= CostBridge1)
         {
-            Debug.Log("Player is within 2 meters of the object.");
-            CheckCost();
+            if (sparkle != null)
+            {
+                sparkle.SetActive(true);
+            }
+        }
+        else
+        {
+            if (sparkle != null)
+            {
+                sparkle.SetActive(false);
+            }
         }
 
         if (Bridge1Unlocked == true)
@@ -46,9 +57,10 @@ public class Bridge : MonoBehaviour
         }
     }
 
-    void CheckCost()
+
+    void OnMouseDown()
     {
-        if (Inventory.Wood >= CostBridge1)
+        if (Inventory.Wood >= CostBridge1 && IsPlayerCloseToTheObject())
         {
             Bridge1Unlocked = true;
             Debug.Log("Woohoo unlocked");

@@ -16,7 +16,7 @@ public class GlaubensanzeigeSlider : MonoBehaviour
     {
 // Get the Slider component
         slider = GetComponent<Slider>();
-        ParticleSys = GameObject.Find("SliderParticles").GetComponent<ParticleSystem>();
+        ParticleSys = GameObject.Find("Fill/SliderParticles").GetComponent<ParticleSystem>();
 
         // Find the "Fill" child GameObject
         fillGameObject = transform.Find("Fill Area").gameObject;
