@@ -8,6 +8,7 @@ public class Flower : MonoBehaviour
     public FlowerSpawner flowerSpawner;
     public static bool flowerExhausted = false;
     private int increaseFlower;
+    private GameObject sparkle;
 
     // Start is called before the first frame update
     void Start()
@@ -32,21 +33,41 @@ public class Flower : MonoBehaviour
         {
             flowerSpawner = spawnerGameObject.GetComponent<FlowerSpawner>();
         }
+        sparkle =this.transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (IsPlayerCloseToTheObject() == true && Inventory.Altar == 1) 
+        if(IsPlayerCloseToTheObject() && Inventory.Altar != 0)
         {
-            if (flowerExhausted == false)
+            if (sparkle != null)
+            {
+                sparkle.SetActive(true);
+            }
+        }
+        else
+        {
+            if (sparkle != null)
+            {
+                sparkle.SetActive(false);
+            }
+        }
+    }
+
+    void OnMouseDown()
+    {
+        Debug.Log("MouseDown");
+        if (flowerExhausted == false && Inventory.Altar != 0)
+        {
+            if (IsPlayerCloseToTheObject() == true) // to make sure only one tree at a time is klicked
             {
                 CollectFlower();
             }
-            else if (flowerExhausted == true)
-            {
-                Debug.Log("Exhausted, can't pick anymore");
-            }
+        }
+        else if (flowerExhausted == true)
+        {
+            Debug.Log("Exhausted, can't pick anymore");
         }
     }
     

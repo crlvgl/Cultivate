@@ -20,7 +20,7 @@ public class FlowerSpawner : MonoBehaviour
         StartCoroutine(SpawnFlowersWithDelay());
         for (int i = 0; i < 9; i++)
         {
-            SpawnFlower();
+            StartCoroutine(SpawnFlowerWithDelay());
         }
     }
 
@@ -52,7 +52,7 @@ public class FlowerSpawner : MonoBehaviour
     public void SpawnFlower()
     {
         Vector2 randomPosition = Random.insideUnitCircle * 1.5f;
-        Vector3 spawnPosition = transform.position + new Vector3(randomPosition.x, randomPosition.y, 0);
+        Vector3 spawnPosition = transform.position + new Vector3(randomPosition.x, randomPosition.y,0);
         GameObject newFlower = Instantiate(flowerPrefab, spawnPosition, Quaternion.identity);
     }
 }
