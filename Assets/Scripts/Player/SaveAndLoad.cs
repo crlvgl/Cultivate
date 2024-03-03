@@ -8,6 +8,11 @@ public class SaveAndLoad : MonoBehaviour
     public Transform playerTransform;
     public Transform cameraTransform;
     public int Bridge1 = 0;
+
+    public GameObject Altar;
+    public GameObject AltarLitUp;
+    public GameObject BridgeBroken;
+    public GameObject BridgeFixed;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +39,8 @@ public class SaveAndLoad : MonoBehaviour
             PlayerPrefs.SetFloat("Exhaustion", Exhaustion.exhaustionPoints);
         }
 
-        if (Input.GetKeyDown(KeyCode.L)) {
+        if (Input.GetKeyDown(KeyCode.L) || staticInfoClass.loadScene == true) {
+            staticInfoClass.loadScene = false;
             //Player and Camera position
             float playerPositionX = PlayerPrefs.GetFloat("playerPositionX");
             float playerPositionY = PlayerPrefs.GetFloat("playerPositionY");
@@ -50,10 +56,26 @@ public class SaveAndLoad : MonoBehaviour
             Inventory.Flower = PlayerPrefs.GetInt("Flower");
             Bridge1 = PlayerPrefs.GetInt("Bridge1");
             if (Bridge1 == 1)
-            {Bridge.Bridge1Unlocked = true;}
+            {
+                Bridge.Bridge1Unlocked = true;
+            }
             else
-            {Bridge.Bridge1Unlocked = false;}
+            {
+                Bridge.Bridge1Unlocked = false;
+                BridgeBroken.SetActive(true);
+                BridgeFixed.SetActive(false);
+            }
             Inventory.Altar = PlayerPrefs.GetInt("Altar");
+            if (Inventory.Altar == 1)
+            {
+                AltarLitUp.SetActive(true);
+                Altar.SetActive(false);
+            }
+            else if (Inventory.Altar == 0)
+            {
+                AltarLitUp.SetActive(false);
+                Altar.SetActive(true);
+            }
             Exhaustion.exhaustionPoints = PlayerPrefs.GetFloat("Exhaustion");
         }
     }
