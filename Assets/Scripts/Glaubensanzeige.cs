@@ -4,27 +4,15 @@ using UnityEngine;
 
 public class Glaubensanzeige : MonoBehaviour
 {
-    private GameObject imageRelic1;
-    private GameObject imageRelic3;
-    private GameObject imageRelic4;
+    private GameObject imageRelic;
     
     // Start is called before the first frame update
     void Start()
     {
-        imageRelic1 = transform.Find("RelicUI/ImageRelic1").gameObject;
-        imageRelic3 = transform.Find("RelicUI/ImageRelic3").gameObject;
-        imageRelic4 = transform.Find("RelicUI/ImageRelic4").gameObject;
-        if (imageRelic1 != null)
+        imageRelic = transform.Find("RelicUI/ImageRelic").gameObject;
+        if (imageRelic != null)
         {
-            imageRelic1.SetActive(false);
-        }
-        if (imageRelic3 != null)
-        {
-            imageRelic3.SetActive(false);
-        }
-        if (imageRelic4 != null)
-        {
-            imageRelic4.SetActive(false);
+            imageRelic.SetActive(false);
         }
     }
 
@@ -33,18 +21,7 @@ public class Glaubensanzeige : MonoBehaviour
     {
         if(Inventory.Relic == 1)
         {
-            imageRelic1.SetActive(true);
-        }
-        if(Inventory.Altar == 1)
-        {
-            imageRelic1.SetActive(false);
-            imageRelic3.SetActive(true);
-        }
-        if(Inventory.Relic == 2)
-        {
-            imageRelic1.SetActive(false);
-            imageRelic3.SetActive(false);
-            imageRelic4.SetActive(true);
+            imageRelic.SetActive(true);
         }
     }
 }

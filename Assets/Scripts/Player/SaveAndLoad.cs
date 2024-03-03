@@ -37,8 +37,6 @@ public class SaveAndLoad : MonoBehaviour
             PlayerPrefs.SetInt("Flower", Inventory.Flower);
             PlayerPrefs.SetInt("Altar", Inventory.Altar);
             PlayerPrefs.SetFloat("Exhaustion", Exhaustion.exhaustionPoints);
-            PlayerPrefs.SetInt("Pickaxe", Inventory.Pickaxe);
-            PlayerPrefs.SetInt("Stone", Inventory.Stone);
         }
 
         if (Input.GetKeyDown(KeyCode.L) || staticInfoClass.loadScene == true) {
@@ -79,8 +77,6 @@ public class SaveAndLoad : MonoBehaviour
                 Altar.SetActive(true);
             }
             Exhaustion.exhaustionPoints = PlayerPrefs.GetFloat("Exhaustion");
-            Inventory.Pickaxe = PlayerPrefs.GetInt("Pickaxe");
-            Inventory.Stone = PlayerPrefs.GetInt("Stone");
         }
     }
 
