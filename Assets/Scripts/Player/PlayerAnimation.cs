@@ -37,6 +37,7 @@ public class PlayerAnimation : MonoBehaviour
         if (TreeAnimation.choppingTrees)
         {
             StartCoroutine(PlayForTime("Attacking", TreeAnimation.WaitSeconds));
+            //StartCoroutine(FallbackAnimationDisabler(TreeAnimation.WaitSeconds));
         }
         else
         {
@@ -73,5 +74,15 @@ public class PlayerAnimation : MonoBehaviour
         animator.SetBool(animName, true);
         yield return new WaitForSeconds(waitTime);
         animator.SetBool(animName, false);
+    }
+
+    IEnumerator FallbackAnimationDisabler(float waitTime = 0)
+    {
+        waitTime += 0.5f;
+        yield return new WaitForSeconds(waitTime);
+        if (animator.GetBool("Attacking"))
+        {
+            TreeAnimation.choppingTrees = false;
+        }
     }
 }

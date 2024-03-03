@@ -58,6 +58,7 @@ public class DestroyTrees : MonoBehaviour
         Inventory.Wood = Inventory.Wood + increaseWood;
         Exhaustion.treesChopped++;
         treeAnimation.DeactivateProgressBar();
+        TreeAnimation.choppingTrees = false;
     }
 
     bool IsPlayerCloseToTheObject()
