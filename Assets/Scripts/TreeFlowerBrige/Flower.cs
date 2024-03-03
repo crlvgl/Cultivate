@@ -13,6 +13,13 @@ public class Flower : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Physics2D.queriesHitTriggers = true;
+
+        if (this.GetComponent<Collider2D>().isActiveAndEnabled == false)
+        {
+            this.GetComponent<Collider2D>().enabled = true;
+        }
+
         if (DevMode.devMode == true)
         {
             increaseFlower = 10;
@@ -57,7 +64,7 @@ public class Flower : MonoBehaviour
 
     void OnMouseDown()
     {
-        Debug.Log("MouseDown");
+        Debug.Log(this.name + "MouseDown");
         if (flowerExhausted == false && Inventory.Altar != 0)
         {
             if (IsPlayerCloseToTheObject() == true) // to make sure only one tree at a time is klicked
@@ -82,9 +89,6 @@ public class Flower : MonoBehaviour
             flowerSpawner.SpawnNewFlowerAfterDelay();
         }
     }
-
-
-
 
     bool IsPlayerCloseToTheObject()
     {
