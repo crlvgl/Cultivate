@@ -11,6 +11,8 @@ public class SaveAndLoad : MonoBehaviour
 
     public GameObject Altar;
     public GameObject AltarLitUp;
+    public GameObject BridgeBroken;
+    public GameObject BridgeFixed;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,14 +56,25 @@ public class SaveAndLoad : MonoBehaviour
             Inventory.Flower = PlayerPrefs.GetInt("Flower");
             Bridge1 = PlayerPrefs.GetInt("Bridge1");
             if (Bridge1 == 1)
-            {Bridge.Bridge1Unlocked = true;}
+            {
+                Bridge.Bridge1Unlocked = true;
+            }
             else
-            {Bridge.Bridge1Unlocked = false;}
+            {
+                Bridge.Bridge1Unlocked = false;
+                BridgeBroken.SetActive(true);
+                BridgeFixed.SetActive(false);
+            }
             Inventory.Altar = PlayerPrefs.GetInt("Altar");
             if (Inventory.Altar == 1)
             {
                 AltarLitUp.SetActive(true);
                 Altar.SetActive(false);
+            }
+            else if (Inventory.Altar == 0)
+            {
+                AltarLitUp.SetActive(false);
+                Altar.SetActive(true);
             }
             Exhaustion.exhaustionPoints = PlayerPrefs.GetFloat("Exhaustion");
         }
