@@ -34,7 +34,8 @@ public class SaveAndLoad : MonoBehaviour
             PlayerPrefs.SetFloat("Exhaustion", Exhaustion.exhaustionPoints);
         }
 
-        if (Input.GetKeyDown(KeyCode.L)) {
+        if (Input.GetKeyDown(KeyCode.L) || staticInfoClass.loadScene == true) {
+            staticInfoClass.loadScene = false;
             //Player and Camera position
             float playerPositionX = PlayerPrefs.GetFloat("playerPositionX");
             float playerPositionY = PlayerPrefs.GetFloat("playerPositionY");
