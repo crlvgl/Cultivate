@@ -7,10 +7,16 @@ public class Altar : MonoBehaviour
 
     public GameObject Player1;
     public GameObject Player2;
+
+    public GameObject AltarLitUp;
+
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
+
+        animator.enabled = false;
     }
 
     // Update is called once per frame
@@ -19,7 +25,16 @@ public class Altar : MonoBehaviour
         if (IsPlayerCloseToAltar())
         {
             Inventory.Altar = 1;
+            StartCoroutine(ActivateAltar());
         }
+    }
+
+    IEnumerator ActivateAltar()
+    {
+        animator.enabled = true;
+        yield return new WaitForSeconds(2.31f);
+        AltarLitUp.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 
     bool IsPlayerCloseToAltar()

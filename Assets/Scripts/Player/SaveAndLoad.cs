@@ -8,6 +8,9 @@ public class SaveAndLoad : MonoBehaviour
     public Transform playerTransform;
     public Transform cameraTransform;
     public int Bridge1 = 0;
+
+    public GameObject Altar;
+    public GameObject AltarLitUp;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +58,11 @@ public class SaveAndLoad : MonoBehaviour
             else
             {Bridge.Bridge1Unlocked = false;}
             Inventory.Altar = PlayerPrefs.GetInt("Altar");
+            if (Inventory.Altar == 1)
+            {
+                AltarLitUp.SetActive(true);
+                Altar.SetActive(false);
+            }
             Exhaustion.exhaustionPoints = PlayerPrefs.GetFloat("Exhaustion");
         }
     }
