@@ -48,9 +48,13 @@ public class GlaubensanzeigeSlider : MonoBehaviour
 
         if(Inventory.Relic == 1)
         {
-            GlaubensanzeigeTargetValue = 0.5f;
+            GlaubensanzeigeTargetValue = 0.33f;
         } 
         if(Inventory.Altar == 1)
+        {
+            GlaubensanzeigeTargetValue = 0.66f;
+        } 
+        if(Inventory.Relic == 2)
         {
             GlaubensanzeigeTargetValue = 1f;
         } 
