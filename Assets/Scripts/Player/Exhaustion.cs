@@ -64,7 +64,10 @@ public class Exhaustion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        reduceExhaustionPoints();
+        if (ClickAgentController.PlayerAi == false)
+        {
+            reduceExhaustionPoints();
+        }
         exhaustionEffects();
         FirstRecovery();
         if (firstTime == false)
