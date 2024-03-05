@@ -8,6 +8,7 @@ TagManager:
   - Tree
   - Flower
   - Home
+  - Pillar
   layers:
   - Default
   - TransparentFX
