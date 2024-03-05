@@ -34,12 +34,12 @@ public class PlayerReaction : MonoBehaviour
     {
         if (ClickAgentController.PlayerControl != 4)
         {
-            if (Input.GetMouseButtonDown(0) && DistancePlayerMouse() > WalkingDistance())
+            if ((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && DistancePlayerMouse() > WalkingDistance())
             {
                 StartCoroutine(QuestionTimer());
                 // Debug.Log("Question");
             }
-            else if (Input.GetMouseButtonDown(0) && DistancePlayerMouse() < WalkingDistance())
+            else if ((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && DistancePlayerMouse() < WalkingDistance())
             {
                 if (TreeAnimation.wantsToChop == true && (TreeAnimation.chopExhausted == true || Inventory.Relic == 0))
                 {
@@ -52,7 +52,7 @@ public class PlayerReaction : MonoBehaviour
                 // Debug.Log("Exclamation");
             }
         }
-        else if (ClickAgentController.PlayerControl == 4 && Input.GetMouseButtonDown(0))
+        else if (ClickAgentController.PlayerControl == 4 && (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)))
         {
             if (TreeAnimation.wantsToChop == true && (TreeAnimation.chopExhausted == true || Inventory.Relic == 0))
             {

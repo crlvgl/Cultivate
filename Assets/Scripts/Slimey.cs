@@ -125,7 +125,7 @@ public class Slimey : MonoBehaviour
 
     void RestorePlayerExhaustion()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0))
         {
             if (mouseOnSlime == true && IsAroundPlayer() == true && isMoving == false)
             {

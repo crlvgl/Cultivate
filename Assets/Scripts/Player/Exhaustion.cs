@@ -64,7 +64,10 @@ public class Exhaustion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        reduceExhaustionPoints();
+        if (ClickAgentController.PlayerAi == false)
+        {
+            reduceExhaustionPoints();
+        }
         exhaustionEffects();
         FirstRecovery();
         if (firstTime == false)
@@ -217,8 +220,11 @@ public class Exhaustion : MonoBehaviour
     {
         isRecovering = true;
         yield return new WaitForSeconds(timeToRecovery*5);
-        exhaustionPoints += 1;
-        playRecoveryAnimation = true;
-        isRecovering = false;
+        if (HomeCloseToPlayer())
+        {
+            exhaustionPoints += 1;
+            playRecoveryAnimation = true;
+            isRecovering = false;
+        }
     }
 }

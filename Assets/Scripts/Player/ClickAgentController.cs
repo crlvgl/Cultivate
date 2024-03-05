@@ -47,7 +47,7 @@ public class ClickAgentController : MonoBehaviour
     public bool PlayerAiOff = false;
     public float CameraX = 5f;
     public float CameraY = 2.5f;
-    public bool PlayerAi = false;
+    public static bool PlayerAi = false;
     public bool developerMode = true;
     public int minWaitTime = 3;
     public int maxWaitTime = 5;
@@ -117,7 +117,7 @@ public class ClickAgentController : MonoBehaviour
 
     void SetTargetPosition()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             //Debug.Log("original target: " + target);

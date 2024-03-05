@@ -107,7 +107,7 @@ public class CameraMovement : MonoBehaviour
         {
             if (ClickAgentController.holdStill == false)
             {
-                if (Input.GetMouseButtonDown(0)) // 0 is the left mouse button
+                if (Input.GetMouseButtonDown(1)) // 0 is the left mouse button
                 {
                     // Store the clicked position
                     CameraPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
