@@ -11,6 +11,7 @@ public class Slimey : MonoBehaviour
     public float pettingTime = 3f;
     private Vector2 target;
     private bool isMoving = false;
+    private bool isPetting = false;
     private bool mouseOnSlime = false;
     public GameObject player_0;
     public GameObject player_1;
@@ -38,7 +39,18 @@ public class Slimey : MonoBehaviour
         DisableCollision();
         SetTargetPosition();
         MoveAgent();
-        RestorePlayerExhaustion();
+    }
+
+    void OnMouseDown()
+    {
+        Debug.Log(IsAroundPlayer());
+        if (isPetting == false)
+        {
+            if (IsAroundPlayer() == true && isMoving == false)
+                {
+                    StartCoroutine(RestoreExhaustion());
+                }
+        }
     }
 
     void OnMouseOver()
@@ -122,23 +134,15 @@ public class Slimey : MonoBehaviour
         isMoving = false;
     }
 
-    void RestorePlayerExhaustion()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (mouseOnSlime == true && IsAroundPlayer() == true && isMoving == false)
-            {
-                StartCoroutine(RestoreExhaustion());
-            }
-        }
-    }
-
     IEnumerator RestoreExhaustion()
     {
+        isPetting = true;
         isMoving = true;
         ClickAgentController.holdStill = true;
         animator.SetBool("Happy", true);
-        yield return new WaitForSeconds(pettingTime);
+        yield return new WaitForSeconds(0.2f);
+        animator.SetBool("Happy", false);
+        yield return new WaitForSeconds(pettingTime-0.2f);
         if (100-Exhaustion.recoverViaPetting < Exhaustion.exhaustionPoints && Exhaustion.exhaustionPoints < 100)
         {
             Exhaustion.exhaustionPoints = 100;
@@ -149,6 +153,7 @@ public class Slimey : MonoBehaviour
         }
         animator.SetBool("Happy", false);
         ClickAgentController.holdStill = false;
+        isPetting = false;
         isMoving = false;
     }
 
