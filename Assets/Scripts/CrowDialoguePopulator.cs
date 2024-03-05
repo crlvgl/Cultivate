@@ -25,7 +25,6 @@ public class CrowDialoguePopulator : MonoBehaviour
         {
             if (CrowTalk.TapNum == NumInHirarchy)
             {
-                Debug.Log("CrowTalks copied");
                 copied = true;
                 CrowTalk.crowTalks = crowTalks;
             }

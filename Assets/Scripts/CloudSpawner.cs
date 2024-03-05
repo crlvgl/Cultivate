@@ -13,24 +13,34 @@ public class CloudSpawner : MonoBehaviour
     public float spawnYPositionMin;
     public float spawnYPositionMax;
     public static int cloudCount = 0;
+    private bool notWorking = true;
+
     // Start is called before the first frame update
-    
     void Start()
     {
         if (limitClouds == false)
         {
             maxClouds = 1000000;
         }
-        StartCoroutine(SpawnCloudRandomly());
+    }
+
+    void Update()
+    {
+        if (notWorking)
+        {
+            StartCoroutine(SpawnCloudRandomly());
+        }
     }
 
     IEnumerator SpawnCloudRandomly()
     {
-            if (cloudCount <= maxClouds) // if max clouds is reached, Unity crashes !! needs to be fixed !!
-            {
-                yield return new WaitForSeconds(Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns));
-                SpawnCloud();
-            }
+        if (cloudCount <= maxClouds) // if max clouds is reached, Unity crashes !! needs to be fixed !!
+        {
+            notWorking = false;
+            Debug.Log("spawned Cloud");
+            yield return new WaitForSeconds(Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns));
+            SpawnCloud();
+        }
     }
     
     private void SpawnCloud()
@@ -38,5 +48,6 @@ public class CloudSpawner : MonoBehaviour
         Vector2 randomPosition = new Vector2(spawnXPosition, Random.Range(spawnYPositionMin, spawnYPositionMax));
         GameObject newCloud = Instantiate(cloudPrefab, randomPosition, Quaternion.identity);
         cloudCount++;
+        notWorking = true;
     }
 }
