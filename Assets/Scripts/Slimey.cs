@@ -39,7 +39,6 @@ public class Slimey : MonoBehaviour
         SetTargetPosition();
         MoveAgent();
         RestorePlayerExhaustion();
-        ControlAnimation();
     }
 
     void OnMouseOver()
@@ -151,18 +150,6 @@ public class Slimey : MonoBehaviour
         animator.SetBool("Happy", false);
         ClickAgentController.holdStill = false;
         isMoving = false;
-    }
-
-    void ControlAnimation()
-    {
-        if (IsMoving() == true)
-        {
-            animator.SetBool("Walking", true);
-        }
-        else
-        {
-            animator.SetBool("Walking", false);
-        }
     }
 
     bool IsAroundPlayer()
