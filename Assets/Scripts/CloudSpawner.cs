@@ -37,7 +37,6 @@ public class CloudSpawner : MonoBehaviour
         if (cloudCount <= maxClouds) // if max clouds is reached, Unity crashes !! needs to be fixed !!
         {
             notWorking = false;
-            Debug.Log("spawned Cloud");
             yield return new WaitForSeconds(Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns));
             SpawnCloud();
         }

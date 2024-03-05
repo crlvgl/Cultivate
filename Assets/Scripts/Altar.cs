@@ -9,20 +9,32 @@ public class Altar : MonoBehaviour
     public GameObject Player2;
 
     public GameObject AltarLitUp;
+    public GameObject AltarCanvas;
 
     public Animator animator;
+    private bool notPlaying = true;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
 
         animator.enabled = false;
+
+        AltarCanvas = AltarLitUp.transform.Find("AltarCanvas").gameObject;
+        if (AltarCanvas == null)
+        {
+            Debug.Log("AltarCanvas not found");
+        }
+        else
+        {
+            Debug.Log(AltarCanvas.name);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (IsPlayerCloseToAltar())
+        if (IsPlayerCloseToAltar() && notPlaying)
         {
             Inventory.Altar = 1;
             StartCoroutine(ActivateAltar());
@@ -31,9 +43,15 @@ public class Altar : MonoBehaviour
 
     IEnumerator ActivateAltar()
     {
+        notPlaying = false;
         animator.enabled = true;
         yield return new WaitForSeconds(2.31f);
         AltarLitUp.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        this.transform.Find("Pillars Old").gameObject.SetActive(true);
+        this.transform.Find("Pillars").gameObject.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        AltarCanvas.SetActive(true);
         this.gameObject.SetActive(false);
     }
 
