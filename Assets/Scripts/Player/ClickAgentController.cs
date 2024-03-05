@@ -117,7 +117,7 @@ public class ClickAgentController : MonoBehaviour
 
     void SetTargetPosition()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             //Debug.Log("original target: " + target);

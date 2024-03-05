@@ -217,8 +217,11 @@ public class Exhaustion : MonoBehaviour
     {
         isRecovering = true;
         yield return new WaitForSeconds(timeToRecovery*5);
-        exhaustionPoints += 1;
-        playRecoveryAnimation = true;
-        isRecovering = false;
+        if (HomeCloseToPlayer())
+        {
+            exhaustionPoints += 1;
+            playRecoveryAnimation = true;
+            isRecovering = false;
+        }
     }
 }
