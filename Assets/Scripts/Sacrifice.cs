@@ -89,6 +89,6 @@ public class Sacrifice : MonoBehaviour
         // Get the center of the object
         Vector2 objectCenter = new Vector2(this.transform.position.x, this.transform.position.y);
         float distance = Vector2.Distance(player2Transform.position, objectCenter);
-        return distance <= 1.0f;
+        return distance <= 1.2f;
     }
 }

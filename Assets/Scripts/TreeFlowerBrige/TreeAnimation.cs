@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class TreeAnimation : MonoBehaviour
+public class TreeAnimation : ChangeCursor
 {
     public Animator animator; // Referenz zum Animator
     public bool Woodtimer = false;
