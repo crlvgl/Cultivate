@@ -33,6 +33,13 @@ public class StartScreen : MonoBehaviour
     [Header("Text Color")]
     public Color textColorOver = new Color(1f, 1f, 1f, 1f);
 
+    [Header("New Sprite")]
+    [Tooltip("if true, only changes sprite, else changes sprite and every other setting")]
+    public bool onlyUseSprite;
+    [Tooltip("New Sprite to use over the old one during mouse over")]
+    public Sprite newSprite;
+    private sprite oldSprite;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +54,8 @@ public class StartScreen : MonoBehaviour
         {
             scaleOver = new Vector2(this.transform.localScale.x*(scaleOverPercent/100), this.transform.localScale.y*(scaleOverPercent/100));
         }
+
+        oldSprite = sprite.sprite;
     }
 
     void OnMouseDown()
@@ -63,16 +72,30 @@ public class StartScreen : MonoBehaviour
 
     void OnMouseEnter()
     {
-        sprite.color = new Color(sprite.color.r-colorShift.x, sprite.color.g-colorShift.y, sprite.color.b-colorShift.z, transparencyOver);
-        this.transform.localScale = new Vector3(this.transform.localScale.x+scaleOver.x, this.transform.localScale.y+scaleOver.y, this.transform.localScale.z);
-        Text.color = textColorOver;
+        if (onlyUseSprite == false)
+        {
+            sprite.color = new Color(sprite.color.r-colorShift.x, sprite.color.g-colorShift.y, sprite.color.b-colorShift.z, transparencyOver);
+            this.transform.localScale = new Vector3(this.transform.localScale.x+scaleOver.x, this.transform.localScale.y+scaleOver.y, this.transform.localScale.z);
+            Text.color = textColorOver;
+        }
+        if (newSprite != null)
+        {
+            sprite.sprite = newSprite;
+        }
     }
 
     void OnMouseExit()
     {
-        sprite.color = new Color(sprite.color.r+colorShift.x, sprite.color.g+colorShift.y, sprite.color.b+colorShift.z, transparencyOut);
-        this.transform.localScale = new Vector3(this.transform.localScale.x-scaleOver.x, this.transform.localScale.y-scaleOver.y, this.transform.localScale.z);
-        Text.color = textColor;
+        if (onlyUseSprite == false)
+        {
+            sprite.color = new Color(sprite.color.r+colorShift.x, sprite.color.g+colorShift.y, sprite.color.b+colorShift.z, transparencyOut);
+            this.transform.localScale = new Vector3(this.transform.localScale.x-scaleOver.x, this.transform.localScale.y-scaleOver.y, this.transform.localScale.z);
+            Text.color = textColor;
+        }
+        if (newSprite != null)
+        {
+            sprite.sprite = oldSprite;
+        }
     }
 
     IEnumerator LoadNewScene()
