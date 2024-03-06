@@ -13,6 +13,8 @@ public class StartScreen : MonoBehaviour
     SpriteRenderer sprite;
     [Header("Mouse Over Settings")]
     [Header("Sprite Color")]
+    [Tooltip("if true, changes color")]
+    public bool changeColor;
     [Tooltip("Color shift in RGB format, 0-255")]
     public Vector3 colorShift;
     [Tooltip("Transparency on mouse over; 0-1")]
@@ -21,6 +23,8 @@ public class StartScreen : MonoBehaviour
     public float transparencyOut = 0.4f;
 
     [Header("Scale")]
+    [Tooltip("if true, changes scale")]
+    public bool changeScale;
     [Tooltip("if tagged uses percentage of current scale, else uses absolute scale change")]
     public bool percent;
     [Tooltip("Scale change on mouse over in X and Y direction; added to current scale; absolute scale")]
@@ -31,11 +35,14 @@ public class StartScreen : MonoBehaviour
     private TMP_Text Text;
     private Color textColor;
     [Header("Text Color")]
+    [Tooltip("if true, changes text color")]
+    public bool changeTextColor;
+    [Tooltip("Text color on mouse over")]
     public Color textColorOver = new Color(1f, 1f, 1f, 1f);
 
     [Header("New Sprite")]
-    [Tooltip("if true, only changes sprite, else changes sprite and every other setting")]
-    public bool onlyUseSprite;
+    [Tooltip("if true, changes sprite")]
+    public bool UseSprite;
     [Tooltip("New Sprite to use over the old one during mouse over")]
     public Sprite newSprite;
     private Sprite oldSprite;
@@ -72,13 +79,19 @@ public class StartScreen : MonoBehaviour
 
     void OnMouseEnter()
     {
-        if (onlyUseSprite == false)
+        if (changeColor)
         {
             sprite.color = new Color(sprite.color.r-colorShift.x, sprite.color.g-colorShift.y, sprite.color.b-colorShift.z, transparencyOver);
+        }
+        if (changeScale)
+        {
             this.transform.localScale = new Vector3(this.transform.localScale.x+scaleOver.x, this.transform.localScale.y+scaleOver.y, this.transform.localScale.z);
+        }
+        if (changeTextColor)
+        {
             Text.color = textColorOver;
         }
-        if (newSprite != null)
+        if (newSprite != null && UseSprite == true)
         {
             sprite.sprite = newSprite;
         }
@@ -86,13 +99,19 @@ public class StartScreen : MonoBehaviour
 
     void OnMouseExit()
     {
-        if (onlyUseSprite == false)
+        if (changeColor)
         {
             sprite.color = new Color(sprite.color.r+colorShift.x, sprite.color.g+colorShift.y, sprite.color.b+colorShift.z, transparencyOut);
+        }
+        if (changeScale)
+        {
             this.transform.localScale = new Vector3(this.transform.localScale.x-scaleOver.x, this.transform.localScale.y-scaleOver.y, this.transform.localScale.z);
+        }
+        if (changeTextColor)
+        {
             Text.color = textColor;
         }
-        if (newSprite != null)
+        if (newSprite != null && UseSprite == true)
         {
             sprite.sprite = oldSprite;
         }
