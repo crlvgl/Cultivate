@@ -38,7 +38,7 @@ public class StartScreen : MonoBehaviour
     public bool onlyUseSprite;
     [Tooltip("New Sprite to use over the old one during mouse over")]
     public Sprite newSprite;
-    private sprite oldSprite;
+    private Sprite oldSprite;
 
     // Start is called before the first frame update
     void Start()
