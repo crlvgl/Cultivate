@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f2501817b998776479c4642fbac2cd25
+guid: 732ee8d5edbc0364083afd1d31b44688
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,18 +119,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Character
+  - name: Pillar-02
     originalName: 
-    pivot: {x: 0.5, y: -0.07692307}
+    pivot: {x: 0.5, y: -0.0106382985}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 17
-      height: 26
-    spriteID: 1dd203c86b8630043b11cefc30ef327a
+      width: 24
+      height: 94
+    spriteID: 4ffc279647444f4448776c741d157f65
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -138,28 +138,28 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: 0, y: 3}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1246400679
-    name: Character
+    guid: -404040067
+    name: Pillar-02
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Character
+    - name: Pillar-02
       frameIndex: 0
       cellRect:
-        x: 3
-        y: 2
-        width: 17
-        height: 26
-      spriteId: 1dd203c86b8630043b11cefc30ef327a
+        x: 0
+        y: 0
+        width: 32
+        height: 96
+      spriteId: 4ffc279647444f4448776c741d157f65
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 23, y: 31}
+  canvasSize: {x: 32, y: 96}

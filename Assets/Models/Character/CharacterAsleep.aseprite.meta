@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ed9bd57d2068eb343afe39885efe1244
+guid: 84ead1ac3ac0d9348a54b435b7fbe813
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,18 +119,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: ToolbarTall
+  - name: CharacterAsleep_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5277778, y: -0.07692307}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 1920
-      height: 13
-    spriteID: 15319342073d8ce43b049c5acc308221
+      width: 36
+      height: 52
+    spriteID: 517179207d79ee248a74b5a750d4ee3b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -138,28 +138,84 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: 0, y: 0}
+  - name: CharacterAsleep_Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: -0.08}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 48
+      y: 4
+      width: 34
+      height: 50
+    spriteID: a6ecde52a71732244953d93c5d6d9cf4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 0}
+  - name: CharacterAsleep_Frame_2
+    originalName: 
+    pivot: {x: 0.5, y: -0.08}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 90
+      y: 4
+      width: 34
+      height: 50
+    spriteID: ae6f51da75c68a94cb95ab3dee811c79
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 84, y: 0}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1061701306
-    name: ToolbarTall
+    guid: -2067212289
+    name: CharacterAsleep
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: ToolbarTall
+    - name: CharacterAsleep_Frame_0
       frameIndex: 0
       cellRect:
         x: 0
         y: 0
-        width: 1920
-        height: 16
-      spriteId: 15319342073d8ce43b049c5acc308221
+        width: 46
+        height: 62
+      spriteId: 517179207d79ee248a74b5a750d4ee3b
+    - name: CharacterAsleep_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 0
+        y: 0
+        width: 46
+        height: 62
+      spriteId: a6ecde52a71732244953d93c5d6d9cf4
+    - name: CharacterAsleep_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 0
+        y: 0
+        width: 46
+        height: 62
+      spriteId: ae6f51da75c68a94cb95ab3dee811c79
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 1920, y: 16}
+  canvasSize: {x: 46, y: 62}
