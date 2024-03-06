@@ -30,17 +30,18 @@ public class ClickAgentController : MonoBehaviour
     private Vector3 lastPosition;
     private string developerInfo = ""; // Information to display on screen
     private string developerInfo2 = "";
+    private int chance;
 
     public static bool holdStill = false;
 
     [Header("Player Control")]
-    public int PlayerControlSetting = 4;
+    public int PlayerControlSetting = 1;
     public static int PlayerControl;
-    public float walkingDistance1Setting = 20.0f;
+    public float walkingDistance1Setting = 1.0f;
     public static float walkingDistance1;
-    public float walkingDistance2Setting = 30.0f;
+    public float walkingDistance2Setting = 3.0f;
     public static float walkingDistance2;
-    public float walkingDistance3Setting = 40.0f;
+    public float walkingDistance3Setting = 5.0f;
     public static float walkingDistance3;
 
     [Header("Player AI Settings")]
@@ -108,6 +109,19 @@ public class ClickAgentController : MonoBehaviour
             timerCoroutine = StartCoroutine(ButtonPressedTimer());
         }
 
+        if(Inventory.Relic == 1)
+        {
+            PlayerControl = 2;
+            holdStill = true;
+            holdStill = false;
+        }
+        if(Inventory.Altar == 1)
+        {
+            PlayerControl = 3;
+            holdStill = true;
+            holdStill = false;
+        }
+
     }
 
     void FixedUpdate()
@@ -120,6 +134,7 @@ public class ClickAgentController : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            chance = Random.Range(0, 100);
             //Debug.Log("original target: " + target);
             //Debug.Log("position: " + transform.position);
             //Debug.Log("true distance: " + Vector2.Distance(transform.position, target));
@@ -189,33 +204,59 @@ public class ClickAgentController : MonoBehaviour
     {
         if (PlayerControl == 1)
         {
-            walkingDistance = walkingDistance1;
+            Debug.Log("PlayerControl == 1");
+            if (chance < 35)
+            {
+                Debug.Log("chance < 30 --> " + chance);
+                walkingDistance = walkingDistance1;
+            }
+            else
+            {
+                walkingDistance = 0f;
+            }
         }
 
         else if (PlayerControl == 2)
         {
-            walkingDistance = walkingDistance2;
+            Debug.Log("PlayerControl == 2");
+            if (chance < 50)
+            {
+                walkingDistance = walkingDistance2;
+            }
+            else
+            {
+                walkingDistance = 0f;
+            }
         }
 
         else if (PlayerControl == 3)
         {
-            walkingDistance = walkingDistance3;
+            Debug.Log("PlayerControl == 3");
+            if (chance < 80)
+            {
+                walkingDistance = walkingDistance3;
+            }
+            else
+            {
+                walkingDistance = 0f;
+            }
         }
 
         else if (PlayerControl == 4)
         {
+            Debug.Log("PlayerControl == 4");
             walkingDistance = Mathf.Infinity;
         }
 
         if (Vector2.Distance(transform.position, target) > walkingDistance)
-            {
-                playerPosition = new Vector2(transform.position.x, transform.position.y);
-                direction = target - playerPosition;
-                direction.Normalize();
-                target = playerPosition + (direction * walkingDistance);
-                //Debug.Log("new target: " + target);
-                //Debug.Log("disstance: " + Vector2.Distance(transform.position, target));
-            }
+        {
+            playerPosition = new Vector2(transform.position.x, transform.position.y);
+            direction = target - playerPosition;
+            direction.Normalize();
+            target = playerPosition + (direction * walkingDistance);
+            //Debug.Log("new target: " + target);
+            //Debug.Log("disstance: " + Vector2.Distance(transform.position, target));
+        }
     }
 
     // Player zwischen den Koordinaten der Liste allCoordinates hin und her laufen lassen
