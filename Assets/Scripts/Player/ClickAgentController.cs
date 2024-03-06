@@ -172,7 +172,7 @@ public class ClickAgentController : MonoBehaviour
         }
         else if (target != null && target != new Vector2(this.transform.position.x, this.transform.position.y) && startedWalking == true)
         {
-            Exhaustion.distanceWalked = Time.time - walkingTimer * 20;
+            Exhaustion.distanceWalked = 2 * (Time.time - walkingTimer);
             // Debug.Log("Updated Timer " + Exhaustion.distanceWalked);
             if (Exhaustion.distanceWalked >= Exhaustion.exhaustionTimer)
             {
@@ -183,7 +183,7 @@ public class ClickAgentController : MonoBehaviour
         else if (target != null && target == new Vector2(this.transform.position.x, this.transform.position.y) && startedWalking == true)
         {
             startedWalking = false;
-            Exhaustion.distanceWalked = Time.time - walkingTimer * 20;
+            Exhaustion.distanceWalked =2 * (Time.time - walkingTimer);
             // Debug.Log("Stopped Timer " + Exhaustion.distanceWalked);
         }
     }
