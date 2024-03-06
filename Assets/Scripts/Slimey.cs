@@ -18,6 +18,7 @@ public class Slimey : MonoBehaviour
     public Animator animator;
     
     UnityEngine.AI.NavMeshAgent agent;
+    
     // Start is called before the first frame update
     void Start()
     {
