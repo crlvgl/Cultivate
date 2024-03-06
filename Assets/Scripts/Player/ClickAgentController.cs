@@ -50,8 +50,8 @@ public class ClickAgentController : MonoBehaviour
     public float CameraY = 2.5f;
     public static bool PlayerAi = false;
     public bool developerMode = true;
-    public int minWaitTime = 3;
-    public int maxWaitTime = 5;
+    public int minWaitTime = 10;
+    public int maxWaitTime = 15;
     
 
     // import agent component
@@ -172,7 +172,7 @@ public class ClickAgentController : MonoBehaviour
         }
         else if (target != null && target != new Vector2(this.transform.position.x, this.transform.position.y) && startedWalking == true)
         {
-            Exhaustion.distanceWalked = Time.time - walkingTimer;
+            Exhaustion.distanceWalked = Time.time - walkingTimer * 20;
             // Debug.Log("Updated Timer " + Exhaustion.distanceWalked);
             if (Exhaustion.distanceWalked >= Exhaustion.exhaustionTimer)
             {
@@ -183,7 +183,7 @@ public class ClickAgentController : MonoBehaviour
         else if (target != null && target == new Vector2(this.transform.position.x, this.transform.position.y) && startedWalking == true)
         {
             startedWalking = false;
-            Exhaustion.distanceWalked = Time.time - walkingTimer;
+            Exhaustion.distanceWalked = Time.time - walkingTimer * 20;
             // Debug.Log("Stopped Timer " + Exhaustion.distanceWalked);
         }
     }
@@ -205,7 +205,7 @@ public class ClickAgentController : MonoBehaviour
         if (PlayerControl == 1)
         {
             Debug.Log("PlayerControl == 1");
-            if (chance < 35)
+            if (chance < 40)
             {
                 Debug.Log("chance < 30 --> " + chance);
                 walkingDistance = walkingDistance1;
