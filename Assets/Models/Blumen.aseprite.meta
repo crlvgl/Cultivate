@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: aa496803343cd3d428ed29d575bb4bb0
+guid: 0f0b522e002729e47b6447cf3e75b332
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,18 +119,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Relict-01
+  - name: Blumen
     originalName: 
-    pivot: {x: 0.5, y: -0.33333334}
+    pivot: {x: 0.4814815, y: -0.071428575}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 12
-      height: 18
-    spriteID: 0436adcca31d94145bd5867846250d47
+      width: 27
+      height: 28
+    spriteID: 78c80aa49b076ef43bdcfbfc05eb4a0b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -138,24 +138,24 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: -6, y: -2}
+    uvTransform: {x: 1, y: 2}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 2002402945
-    name: Relict-01
+    guid: -26754603
+    name: Blumen
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Relict-01
+    - name: Blumen
       frameIndex: 0
       cellRect:
         x: 0
         y: 0
         width: 32
         height: 32
-      spriteId: 0436adcca31d94145bd5867846250d47
+      spriteId: 78c80aa49b076ef43bdcfbfc05eb4a0b
     linkedCells: []
     parentIndex: -1
   platformSettings: []
