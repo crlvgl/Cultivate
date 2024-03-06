@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class Pickaxe : MonoBehaviour
 {
-    private GameObject pickaxe; 
+    private GameObject pickaxe;
+    private GameObject axe;
 
     void Start()
     {
@@ -12,6 +13,21 @@ public class Pickaxe : MonoBehaviour
         {
             pickaxe.SetActive(false);
         }
+        else
+        {
+            Debug.LogError("Pickaxe not found!");
+        }
+
+        axe = transform.Find("Axe").gameObject;
+
+        if (axe != null)
+        {
+            axe.SetActive(false);
+        }
+        else
+        {
+            Debug.LogError("Axe not found!");
+        }
     }
 
     void Update()
@@ -19,6 +35,11 @@ public class Pickaxe : MonoBehaviour
         if (Inventory.Pickaxe == 1 && pickaxe != null)
         {
             pickaxe.SetActive(true); 
+        }
+
+        if (Inventory.Relic == 1 && axe != null)
+        {
+            axe.SetActive(true);
         }
     }
 }
