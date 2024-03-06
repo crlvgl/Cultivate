@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ActivateTrees : MonoBehaviour
 {
-    public int timeToRespawnMin = 5;
-    public int timeToRespawnMax = 10;
+    public int timeToRespawnMin = 15;
+    public int timeToRespawnMax = 20;
     private List<GameObject> trees;
     private GameObject treeObject;
     // Start is called before the first frame update
