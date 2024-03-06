@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stone : ChangeCursor
+public class Stone : ChangeCursorPickaxe
 {
     public static float WaitSecondsStone = 3f;
     private bool sparkleOff = false;
@@ -111,9 +111,9 @@ public class Stone : ChangeCursor
         if (player2.activeSelf)
         {
             // Get the center of the object
-            Vector2 objectCenter = new Vector2(this.transform.position.x, this.transform.position.y - this.GetComponent<SpriteRenderer>().bounds.size.y / 2);
+            Vector2 objectCenter = new Vector2(this.transform.position.x, this.transform.position.y);
             float distance = Vector2.Distance(player2.transform.position, objectCenter);
-            return distance <= 0.5f;
+            return distance <= 0.7f;
         }
         else
         {
