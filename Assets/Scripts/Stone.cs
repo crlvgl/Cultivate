@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stone : MonoBehaviour
+public class Stone : ChangeCursor
 {
     public static float WaitSecondsStone = 3f;
     private bool sparkleOff = false;
