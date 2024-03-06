@@ -299,7 +299,8 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4299248772676641783, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
 --- !u!1001 &185358521
 PrefabInstance:
@@ -376,7 +377,8 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4299248772676641783, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
 --- !u!1001 &239387955
 PrefabInstance:
@@ -693,7 +695,8 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4299248772676641783, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
 --- !u!1001 &378754054
 PrefabInstance:
@@ -770,7 +773,8 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4299248772676641783, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
 --- !u!1001 &421333101
 PrefabInstance:
@@ -1017,7 +1021,8 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4299248772676641783, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
 --- !u!1001 &721435440
 PrefabInstance:
@@ -1094,7 +1099,8 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4299248772676641783, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
 --- !u!1 &740161241
 GameObject:
@@ -1334,7 +1340,8 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4299248772676641783, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
 --- !u!1001 &813718764
 PrefabInstance:
@@ -1787,7 +1794,8 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4299248772676641783, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
 --- !u!1 &988181549
 GameObject:
@@ -2006,7 +2014,8 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4299248772676641783, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
 --- !u!1001 &1016174961
 PrefabInstance:
@@ -2327,7 +2336,8 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4299248772676641783, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
 --- !u!1001 &1109424733
 PrefabInstance:
@@ -2404,7 +2414,8 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4299248772676641783, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
 --- !u!1001 &1253787098
 PrefabInstance:
@@ -3399,7 +3410,8 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4299248772676641783, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
 --- !u!1 &1902709895
 GameObject:
@@ -3712,7 +3724,8 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4299248772676641783, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
 --- !u!1001 &2135612123
 PrefabInstance:
@@ -3789,5 +3802,6 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4299248772676641783, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 723f4c9afc7075546959d2e7405e7539, type: 3}
