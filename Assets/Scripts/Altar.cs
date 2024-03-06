@@ -41,7 +41,8 @@ public class Altar : MonoBehaviour
     {
         notPlaying = false;
         animator.enabled = true;
-        yield return new WaitForSeconds(2.31f);
+        yield return new WaitForSeconds(2.310f);
+        animator.enabled = false;
         AltarLitUp.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         this.transform.Find("Pillars Old").gameObject.SetActive(true);
