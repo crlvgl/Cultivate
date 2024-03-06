@@ -40,17 +40,22 @@ public class Flower : MonoBehaviour
         {
             flowerSpawner = spawnerGameObject.GetComponent<FlowerSpawner>();
         }
-        sparkle =this.transform.GetChild(0).gameObject;
+        sparkle = this.transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(IsPlayerCloseToTheObject() && Inventory.Altar != 0)
+        if(IsPlayerCloseToTheObject(1f) && Inventory.Altar != 0 && flowerExhausted == false)
         {
             if (sparkle != null)
             {
                 sparkle.SetActive(true);
+            }
+
+            if(IsPlayerCloseToTheObject(0.2f)) 
+            {
+                CollectFlower();
             }
         }
         else
@@ -59,22 +64,6 @@ public class Flower : MonoBehaviour
             {
                 sparkle.SetActive(false);
             }
-        }
-    }
-
-    void OnMouseDown()
-    {
-        Debug.Log(this.name + "MouseDown");
-        if (flowerExhausted == false && Inventory.Altar != 0)
-        {
-            if (IsPlayerCloseToTheObject() == true) // to make sure only one tree at a time is klicked
-            {
-                CollectFlower();
-            }
-        }
-        else if (flowerExhausted == true)
-        {
-            Debug.Log("Exhausted, can't pick anymore");
         }
     }
     
@@ -90,11 +79,11 @@ public class Flower : MonoBehaviour
         }
     }
 
-    bool IsPlayerCloseToTheObject()
+    bool IsPlayerCloseToTheObject(float distanceForSparkle)
     {
         // Get the center of the object
         Vector2 objectCenter = new Vector2(this.transform.position.x, this.transform.position.y);
         float distance = Vector2.Distance(playerTransform.position, objectCenter);
-        return distance <= 0.2f;
+        return distance <= distanceForSparkle;
     }
 }
