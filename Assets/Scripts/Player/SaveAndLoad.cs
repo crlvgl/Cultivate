@@ -39,6 +39,7 @@ public class SaveAndLoad : MonoBehaviour
             PlayerPrefs.SetFloat("Exhaustion", Exhaustion.exhaustionPoints);
             PlayerPrefs.SetInt("Pickaxe", Inventory.Pickaxe);
             PlayerPrefs.SetInt("Stone", Inventory.Stone);
+            PlayerPrefs.SetString("CrowScriptedDialogue", CrowTalk.scriptTrigger);
         }
 
         if (Input.GetKeyDown(KeyCode.L) || staticInfoClass.loadScene == true) {
@@ -81,6 +82,7 @@ public class SaveAndLoad : MonoBehaviour
             Exhaustion.exhaustionPoints = PlayerPrefs.GetFloat("Exhaustion");
             Inventory.Pickaxe = PlayerPrefs.GetInt("Pickaxe");
             Inventory.Stone = PlayerPrefs.GetInt("Stone");
+            CrowTalk.scriptTrigger = PlayerPrefs.GetString("CrowScriptedDialogue");
         }
     }
 
