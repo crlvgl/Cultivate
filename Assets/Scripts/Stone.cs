@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Stone : ChangeCursorPickaxe
 {
-    public static float WaitSecondsStone = 3f;
+    public static float WaitSecondsStone = 5f;
     private bool sparkleOff = false;
     private GameObject sparkle;
     private StoneProgressBar StoneProgressBar;

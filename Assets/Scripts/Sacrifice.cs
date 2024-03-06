@@ -29,12 +29,12 @@ public class Sacrifice : MonoBehaviour
         if (IsPlayerCloseToTheObject())
         {
             // Show Button1 if Inventory.Pickaxe == 0, otherwise show Button2
-            if (Inventory.Wood >= 10 && Inventory.Flower >=10 && Inventory.Pickaxe == 0)
+            if (Inventory.Wood >= 10 && Inventory.Flower >=50 && Inventory.Pickaxe == 0)
             {
                 button1.SetActive(true);
                 button2.SetActive(false);
             }
-            else if (Inventory.Wood >= 10 && Inventory.Stone >=10 && Inventory.Pickaxe == 1 && Inventory.Relic == 1)
+            else if (Inventory.Wood >= 15 && Inventory.Stone >=10 && Inventory.Pickaxe == 1 && Inventory.Relic == 1)
             {
                 button1.SetActive(false);
                 button2.SetActive(true);
@@ -51,11 +51,11 @@ public class Sacrifice : MonoBehaviour
     void UseButton1()
     {
         // Check if there's enough wood
-        if (Inventory.Wood >= 10 && Inventory.Flower >=10 && Inventory.Pickaxe == 0)
+        if (Inventory.Wood >= 10 && Inventory.Flower >=50 && Inventory.Pickaxe == 0)
         {
             Debug.Log("Was: Wood = " + Inventory.Wood + "; Flower = " + Inventory.Flower + "; Pickaxe = "+ Inventory.Pickaxe);
             Inventory.Wood -= 10;
-            Inventory.Flower -= 10;
+            Inventory.Flower -= 50;
             Inventory.Pickaxe = 1;
             Debug.Log("Now: Wood = " + Inventory.Wood + "; Flower = " + Inventory.Flower + "; Pickaxe = "+ Inventory.Pickaxe);
             button1.SetActive(false);
@@ -69,10 +69,10 @@ public class Sacrifice : MonoBehaviour
 
     void UseButton2()
     {
-        if (Inventory.Wood >= 10 && Inventory.Stone >=10 && Inventory.Pickaxe == 1)
+        if (Inventory.Wood >= 15 && Inventory.Stone >=10 && Inventory.Pickaxe == 1)
         {
             Debug.Log("Was: Wood = " + Inventory.Wood + "; Stone = " + Inventory.Stone);
-            Inventory.Wood -= 10;
+            Inventory.Wood -= 15;
             Inventory.Stone -= 10;
             Inventory.Relic = 2;
             Debug.Log("Now: Wood = " + Inventory.Wood + "; Stone = " + Inventory.Stone);
