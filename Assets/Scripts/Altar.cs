@@ -23,11 +23,7 @@ public class Altar : MonoBehaviour
         AltarCanvas = AltarLitUp.transform.Find("AltarCanvas").gameObject;
         if (AltarCanvas == null)
         {
-            Debug.Log("AltarCanvas not found");
-        }
-        else
-        {
-            Debug.Log(AltarCanvas.name);
+            Debug.LogError("AltarCanvas not found");
         }
     }
 

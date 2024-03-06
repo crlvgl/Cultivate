@@ -106,14 +106,14 @@ public class Slimey : MonoBehaviour
             {
                 if (Vector2.Distance(this.transform.position, GameObject.Find("PlayerHome").transform.position) <= radiusAroundHouse)
                 {
-                    target = (Vector2)player_0.transform.position + new Vector2(-0.1f, 0.1f);
+                    target = (Vector2)player_0.transform.position + new Vector2(-0.2f, 0.2f);
                 }
             }
             else if (player_1.activeSelf == true)
             {
                 if (Vector2.Distance(this.transform.position, GameObject.Find("PlayerHome").transform.position) <= radiusAroundHouse)
                 {
-                    target = (Vector2)player_1.transform.position + new Vector2(-0.1f, 0.1f);
+                    target = (Vector2)player_1.transform.position + new Vector2(-0.2f, 0.2f);
                 }
             }
         }
