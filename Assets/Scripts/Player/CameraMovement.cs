@@ -11,7 +11,7 @@ public class CameraMovement : MonoBehaviour
     private Vector3 originalScale;
     private float zoomTimer = 0f;
     private float zoomDuration = 3f;
-    private bool lockOnPlayer = false;
+    private bool lockOnPlayer = true;
 
 
     public static Vector3 CameraPosition;
