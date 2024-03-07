@@ -644,7 +644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e469ac3db69d61b44a0e1641e5f99fdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectCursor: {fileID: 0}
+  objectCursor: {fileID: 2800000, guid: ae5d362f29fae1c40aa36006910730ed, type: 3}
   animator: {fileID: 1160356261127867848, guid: 3336efc75451fdf4792e4d3e51ca8fb8, type: 3}
   Woodtimer: 0
   player1: {fileID: 0}
