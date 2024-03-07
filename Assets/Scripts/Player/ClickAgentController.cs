@@ -47,11 +47,11 @@ public class ClickAgentController : MonoBehaviour
     public static float walkingDistance3;
 
     [Header("Player AI Settings")]
-    public bool PlayerAiOff = false;
+    public bool PlayerAiOff = true;
     public float CameraX = 5f;
     public float CameraY = 2.5f;
     public static bool PlayerAi = false;
-    public bool developerMode = true;
+    public bool developerMode = false;
     public int minWaitTime = 10;
     public int maxWaitTime = 15;
     
@@ -117,7 +117,7 @@ public class ClickAgentController : MonoBehaviour
         // Check if any key or mouse button is pressed
         if (Input.anyKeyDown || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2))
         {
-            // Start or restart the timer when a button is pressed
+            // Stoppe die laufende Coroutine und starte sie neu.
             if (timerCoroutine != null)
             {
                 StopCoroutine(timerCoroutine);
@@ -400,27 +400,40 @@ public class ClickAgentController : MonoBehaviour
 
     IEnumerator ButtonPressedTimer()
     {
-        if (PlayerAiOff == false){
+       // if (PlayerAiOff == false){
             // Set pressedButton to true and wait for 60 seconds
-            pressedButton = true;
-            PlayerAi = false;
-            if (developerMode)
-                {
-                    developerInfo2 ="pressedButton = " + pressedButton;
-                }
-            yield return new WaitForSeconds(5);
+         //   pressedButton = true;
+         //   PlayerAi = false;
+         //   if (developerMode)
+         //       {
+         //           developerInfo2 ="pressedButton = " + pressedButton;
+         //       }
+         //   yield return new WaitForSeconds(1);
 
             // After 60 seconds, set pressedButton to false
-            pressedButton = false;
-            PlayerAi = true;
-            if (developerMode)
-                {
-                    developerInfo2 ="pressedButton = " + pressedButton;
-                }
+         //   pressedButton = false;
+         //   PlayerAi = true;
+         //   if (developerMode)
+         //       {
+         //           developerInfo2 ="pressedButton = " + pressedButton;
+         //       }
 
-        }
-        
+        //}
+
+        yield return new WaitForSeconds(30);
+        do
+        {
+            // Setze das Ziel und bewege den Agenten.
+            target = new Vector2(Random.Range(-9.1f, 9.1f), Random.Range(-4.9f, 4.9f));
+            MoveAgent();
+
+            // Warte erneut 20 Sekunden.
+            yield return new WaitForSeconds(20);
+
+        } 
+        while (true); // Endlos, bis diese Coroutine explizit gestoppt wird durch das Drücken einer Taste.
     }
+
 
     IEnumerator StartWalkingSoundWithDelay()
     {
