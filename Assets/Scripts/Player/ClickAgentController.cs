@@ -93,13 +93,14 @@ public class ClickAgentController : MonoBehaviour
         {
             if (EndGame.moveToP1 == true)
             {
-                agent.SetDestination(new Vector3(17.6599f, 11.3f, this.transform.position.z));
+                agent.SetDestination(new Vector3(17.6499f, 11.3f, this.transform.position.z));
             }
             if (EndGame.moveToP2 == true)
             {
-                agent.speed = 1f;
+                agent.speed = 0.3f;
                 agent.SetDestination(new Vector3(17.6599f, 12.15f, this.transform.position.z));
             }
+            return;
         }
        
         if (holdStill == false)

@@ -35,6 +35,7 @@ public class CameraMovement : MonoBehaviour
     {
         if (EndGame.disableAll == true)
         {
+            this.transform.position = GetPlayerPosition();
             return;
         }
         if (Input.GetKeyDown(KeyCode.Q))

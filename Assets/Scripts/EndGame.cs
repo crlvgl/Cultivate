@@ -6,7 +6,7 @@ public class EndGame : MonoBehaviour
 {
     public Animator animator;
     public float waitBeforeEndGame1 = 2f;
-    public float waitBeforeEndGame2 = 5f;
+    public float waitBeforeEndGame2 = 4.5f;
     public static bool disableAll = false;
     public static bool moveToP1 = false;
     public static bool moveToP2 = false;
@@ -42,5 +42,7 @@ public class EndGame : MonoBehaviour
         moveToP2 = true;
         yield return new WaitForSeconds(waitBeforeEndGame2);
         animator.enabled = true;
+        yield return new WaitForSeconds(6.010f);
+        animator.enabled = false;
     }
 }
