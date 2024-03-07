@@ -31,6 +31,8 @@ public class ClickAgentController : MonoBehaviour
     private string developerInfo = ""; // Information to display on screen
     private string developerInfo2 = "";
     private int chance;
+    private AudioSource audioSource;
+    private Coroutine walkingSoundCoroutine = null;
 
     public static bool holdStill = false;
 
@@ -60,6 +62,7 @@ public class ClickAgentController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         PlayerControl = PlayerControlSetting;
         walkingDistance1 = walkingDistance1Setting;
         walkingDistance2 = walkingDistance2Setting;
@@ -120,6 +123,23 @@ public class ClickAgentController : MonoBehaviour
             PlayerControl = 3;
             holdStill = true;
             holdStill = false;
+        }
+
+        if (startedWalking && walkingSoundCoroutine == null && !audioSource.isPlaying)
+        {
+            walkingSoundCoroutine = StartCoroutine(StartWalkingSoundWithDelay());
+        }
+        else if (!startedWalking)
+        {
+            if (walkingSoundCoroutine != null)
+            {
+                StopCoroutine(walkingSoundCoroutine);
+                walkingSoundCoroutine = null;
+            }
+            if (audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
         }
 
     }
@@ -387,6 +407,18 @@ public class ClickAgentController : MonoBehaviour
 
         }
         
+    }
+
+    IEnumerator StartWalkingSoundWithDelay()
+    {
+        yield return new WaitForSeconds(0.5f); 
+
+        if (startedWalking) 
+        {
+            Debug.Log("startedwalking");
+            audioSource.Play(); 
+        }
+        walkingSoundCoroutine = null;
     }
 
 }
