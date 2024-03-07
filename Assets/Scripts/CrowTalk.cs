@@ -23,6 +23,7 @@ public class CrowTalk : MonoBehaviour
     public static int TapNum = 1;
     private static TMP_Text TextBoxText;
     private static string tempText;
+    private bool didTalk = false;
 
     // Start is called before the first frame update
     void Start()
@@ -103,9 +104,10 @@ public class CrowTalk : MonoBehaviour
         }
         if (TextBox.activeSelf == false)
         {
-            if (Exhaustion.exhaustionPoints <= exhaustionTrigger)
+            if (Exhaustion.exhaustionPoints <= exhaustionTrigger && didTalk == false)
             {
                 TextBox.SetActive(true);
+                didTalk = true;
                 StartTalkingExhaustion();
             }
         }
