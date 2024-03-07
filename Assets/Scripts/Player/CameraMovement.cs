@@ -38,11 +38,14 @@ public class CameraMovement : MonoBehaviour
             if (WASD == true)
             {
                 WASD = false;
+                lockOnPlayer = true;
+                CameraPosition = GetPlayerPosition();
             }
             else
             {
                 WASD = true;
                 lockOnPlayer = false;
+                this.transform.position = GetPlayerPosition();
             }
         }
         if (WASD == true)
@@ -132,11 +135,6 @@ public class CameraMovement : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Y))
             {
-                lockOnPlayer = false;
-            }
-            else if (Input.GetKeyDown(KeyCode.Q))
-            {
-                WASD = true;
                 lockOnPlayer = false;
             }
         }
