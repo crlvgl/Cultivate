@@ -22,7 +22,7 @@ public class SaveAndLoad : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O)) {
+        if (Input.GetKeyDown(KeyCode.O) || SaveExitButton.saveGame == true) {
             playerPosition = new Vector2(playerTransform.position.x, playerTransform.position.y);
             PlayerPrefs.SetFloat("playerPositionX", playerPosition.x);
             PlayerPrefs.SetFloat("playerPositionY", playerPosition.y);
@@ -40,6 +40,7 @@ public class SaveAndLoad : MonoBehaviour
             PlayerPrefs.SetInt("Pickaxe", Inventory.Pickaxe);
             PlayerPrefs.SetInt("Stone", Inventory.Stone);
             PlayerPrefs.SetString("CrowScriptedDialogue", CrowTalk.scriptTrigger);
+            SaveExitButton.saveGame = false;
         }
 
         if (Input.GetKeyDown(KeyCode.L) || staticInfoClass.loadScene == true) {

@@ -9,6 +9,7 @@ public class EndGame : MonoBehaviour
     public float waitBeforeEndGame2 = 4.5f;
     public float waitBeforeEndGame3 = 3f;
     public static bool disableAll = false;
+    public static bool disableSaveMenu = false;
     public static bool moveToP1 = false;
     public static bool moveToP2 = false;
     public string pathToScene;
@@ -33,6 +34,7 @@ public class EndGame : MonoBehaviour
         if (Inventory.Relic == 2 && disableAll == false)
         {
             disableAll = true;
+            disableSaveMenu = true;
             StartCoroutine(EndGameAnimation());
         }
     }
