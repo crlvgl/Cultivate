@@ -83,20 +83,23 @@ public class Exhaustion : MonoBehaviour
 
     void reduceExhaustionPoints()
     {
-        if (distanceWalked >= distanceToExhaustion)
+        if (exhaustionPoints > 0)
         {
-            exhaustionPoints -= 1;
-            distanceWalked -= distanceToExhaustion;
-        }
-        if (treesChopped >= treesToExhaustion)
-        {
-            exhaustionPoints -= 1;
-            treesChopped -= treesToExhaustion;
-        }
-        if (flowersPicked >= flowersToExhaustion)
-        {
-            exhaustionPoints -= 1;
-            flowersPicked -= flowersToExhaustion;
+            if (distanceWalked >= distanceToExhaustion)
+            {
+                exhaustionPoints -= 1;
+                distanceWalked -= distanceToExhaustion;
+            }
+            if (treesChopped >= treesToExhaustion)
+            {
+                exhaustionPoints -= 1;
+                treesChopped -= treesToExhaustion;
+            }
+            if (flowersPicked >= flowersToExhaustion)
+            {
+                exhaustionPoints -= 1;
+                flowersPicked -= flowersToExhaustion;
+            }
         }
     }
 
