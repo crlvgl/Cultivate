@@ -7,6 +7,10 @@ public class ChangeCursorAxe: MonoBehaviour
 
     protected virtual void OnMouseEnter()
     {
+        if (EndGame.disableAll == true)
+        {
+            return;
+        }
         if(Inventory.Relic != 0)
         {
         Cursor.SetCursor(objectCursor, Vector2.zero, CursorMode.Auto);
@@ -15,6 +19,10 @@ public class ChangeCursorAxe: MonoBehaviour
 
     protected virtual void OnMouseExit()
     {
+        if (EndGame.disableAll == true)
+        {
+            return;
+        }
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
     }
 }

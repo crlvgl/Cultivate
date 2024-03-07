@@ -32,6 +32,10 @@ public class PlayerReaction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (EndGame.disableAll == true)
+        {
+            return;
+        }
         if (ClickAgentController.PlayerControl != 4)
         {
             if ((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && DistancePlayerMouse() > WalkingDistance())

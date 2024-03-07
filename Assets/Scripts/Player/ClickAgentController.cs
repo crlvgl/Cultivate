@@ -89,6 +89,18 @@ public class ClickAgentController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (EndGame.disableAll == true)
+        {
+            if (EndGame.moveToP1 == true)
+            {
+                agent.SetDestination(new Vector3(17.6599f, 11.3f, this.transform.position.z));
+            }
+            if (EndGame.moveToP2 == true)
+            {
+                agent.speed = 1f;
+                agent.SetDestination(new Vector3(17.6599f, 12.15f, this.transform.position.z));
+            }
+        }
        
         if (holdStill == false)
         {

@@ -41,6 +41,10 @@ public class CrowTalk : MonoBehaviour
 
     void Update()
     {
+        if (EndGame.disableAll == true)
+        {
+            return;
+        }
         if (scriptTrigger == "start")
         {
             if (TextBox.activeSelf == false && hasStarted == false)
@@ -115,6 +119,10 @@ public class CrowTalk : MonoBehaviour
 
     void OnMouseDown()
     {
+        if (EndGame.disableAll == true)
+        {
+            return;
+        }
         if (TextBox.activeSelf == false)
         {
             TextBox.SetActive(true);
