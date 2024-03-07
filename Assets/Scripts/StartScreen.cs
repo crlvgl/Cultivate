@@ -5,6 +5,7 @@ using TMPro;
 
 public class StartScreen : MonoBehaviour
 {
+    private AudioSource audioSource;
     [Header("Loading Settings")]
     public string pathToScene;
     [Tooltip("LoadMode: 'new' loads new game, 'load' loads saved game")]
@@ -63,6 +64,7 @@ public class StartScreen : MonoBehaviour
         }
 
         oldSprite = sprite.sprite;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void OnMouseDown()
@@ -95,6 +97,8 @@ public class StartScreen : MonoBehaviour
         {
             sprite.sprite = newSprite;
         }
+        audioSource.Play(); 
+
     }
 
     void OnMouseExit()
