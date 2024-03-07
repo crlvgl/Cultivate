@@ -7,6 +7,9 @@ public class CrowTalk : MonoBehaviour
 {
     public static string[] crowTalks;
     public static string[] crowTalksScript;
+    public static string[] crowTalksExhaustion;
+    [Tooltip("Exhaustionpoints remaining to trigger Dialogue about exhaustion; 0-100")]
+    public int exhaustionTrigger;
     private static Queue<string> crowTalkQueue;
     public static GameObject TextBox;
     [Tooltip("Total Number of Hirarchy; must be the same as the Total Number of unique Dialogues")]
@@ -98,6 +101,14 @@ public class CrowTalk : MonoBehaviour
                 scriptTrigger = "";
             }
         }
+        if (TextBox.activeSelf == false)
+        {
+            if (Exhaustion.exhaustionPoints <= exhaustionTrigger)
+            {
+                TextBox.SetActive(true);
+                StartTalkingExhaustion();
+            }
+        }
     }
 
     void OnMouseDown()
@@ -117,6 +128,18 @@ public class CrowTalk : MonoBehaviour
         crowTalkQueue.Clear();
         
         foreach (string talk in crowTalks)
+        {
+            crowTalkQueue.Enqueue(talk);
+        }
+
+        ContinueTalking();
+    }
+
+    void StartTalkingExhaustion()
+    {
+        crowTalkQueue.Clear();
+        
+        foreach (string talk in crowTalksExhaustion)
         {
             crowTalkQueue.Enqueue(talk);
         }

@@ -9,6 +9,8 @@ public class CrowDialoguePopulator : MonoBehaviour
     public bool onClick;
     [Tooltip("If true, the Dialogue is triggered by the script")]
     public bool scripted;
+    [Tooltip("If true, the Dialogue is triggered by the exhaustion depleting; only one Dialogue can be triggered by exhaustion")]
+    public bool exhaustion;
     [Tooltip("Number in the Hirarchy; when reached, the Dialogue is used; MUST BE UNIQUE FOR EACH DIALOGUE!")]
     public int NumInHirarchy;
     [Tooltip("The Trigger for the Dialogue; must be unique for each Dialogue, set by CrowTalk.cs; [start, tree, wood, altar, sacrificeFlower, pickaxe, sacrificeStone]")]
@@ -23,13 +25,17 @@ public class CrowDialoguePopulator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (onClick == false && scripted == false)
+        if (onClick == false && scripted == false && exhaustion == false)
         {
-            Debug.LogError("Please set either onClick or scripted to true");
+            Debug.LogError("Please set either onClick, scripted or exhaustion to true");
         }
-        else if (onClick == true && scripted == true)
+        else if (onClick == true && scripted == true && exhaustion == true)
         {
-            Debug.LogError("Please set only one of onClick or scripted to true");
+            Debug.LogError("Please set only one of onClick, scripted or exhaustion to true");
+        }
+        else if ((onClick && exhaustion) || (onClick && scripted) || (exhaustion && scripted))
+        {
+            Debug.LogError("Please set only one of onClick, scripted or exhaustion to true");
         }
     }
 
@@ -58,6 +64,13 @@ public class CrowDialoguePopulator : MonoBehaviour
             if (CrowTalk.scriptTrigger == trigger)
             {
                 CrowTalk.crowTalksScript = crowTalks;
+            }
+        }
+        else if (exhaustion)
+        {
+            if (CrowTalk.crowTalksExhaustion == null)
+            {
+                CrowTalk.crowTalksExhaustion = crowTalks;
             }
         }
     }
