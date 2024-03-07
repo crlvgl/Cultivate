@@ -12,6 +12,7 @@ public class EndGame : MonoBehaviour
     public static bool moveToP1 = false;
     public static bool moveToP2 = false;
     public string pathToScene;
+    public GameObject EndScreen1;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +46,7 @@ public class EndGame : MonoBehaviour
         yield return new WaitForSeconds(waitBeforeEndGame2);
         animator.enabled = true;
         yield return new WaitForSeconds(6.010f);
+        EndScreen1.SetActive(true);
         animator.enabled = false;
         yield return new WaitForSeconds(waitBeforeEndGame3);
 
