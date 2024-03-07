@@ -40,9 +40,28 @@ public class ZoomZone : MonoBehaviour
             }
             else if (player2.activeSelf)
             {
-                float distance = Vector2.Distance(player2.transform.position, this.transform.position);
+                float distance = Vector2.Distance(player2.transform.position, new Vector2(4,16));
                 //Debug.Log(distance);
                 return distance <= 4f;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else if(gameObject.name == "ZoomZoneStone") //special treatment
+        {
+            if (player1.activeSelf)
+            {
+                float distance = Vector2.Distance(player1.transform.position, this.transform.position);
+                //Debug.Log(distance);
+                return distance <= 2.5f;
+            }
+            else if (player2.activeSelf)
+            {
+                float distance = Vector2.Distance(player2.transform.position, this.transform.position);
+                //Debug.Log(distance);
+                return distance <= 2.5f;
             }
             else
             {
