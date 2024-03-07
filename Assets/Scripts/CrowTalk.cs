@@ -24,6 +24,7 @@ public class CrowTalk : MonoBehaviour
     private static TMP_Text TextBoxText;
     private static string tempText;
     private bool didTalk = false;
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +38,7 @@ public class CrowTalk : MonoBehaviour
         {
             Debug.LogError("RepeatOnce cant be higher than HirarchyNum");
         }
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -142,6 +144,7 @@ public class CrowTalk : MonoBehaviour
             crowTalkQueue.Enqueue(talk);
         }
 
+        audioSource.Play(); 
         ContinueTalking();
     }
 
@@ -154,6 +157,7 @@ public class CrowTalk : MonoBehaviour
             crowTalkQueue.Enqueue(talk);
         }
 
+        audioSource.Play(); 
         ContinueTalking();
     }
 
@@ -166,6 +170,7 @@ public class CrowTalk : MonoBehaviour
             crowTalkQueue.Enqueue(talk);
         }
 
+        audioSource.Play(); 
         ContinueTalking();
     }
 
