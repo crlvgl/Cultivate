@@ -8,7 +8,7 @@ public class StartScreen : MonoBehaviour
     private AudioSource audioSource;
     [Header("Loading Settings")]
     public string pathToScene;
-    [Tooltip("LoadMode: 'new' loads new game, 'load' loads saved game")]
+    [Tooltip("LoadMode: 'new' loads new game, 'load' loads saved game, 'quit' closes game")]
     public string LoadMode;
 
     SpriteRenderer sprite;
@@ -76,6 +76,12 @@ public class StartScreen : MonoBehaviour
         else if (LoadMode == "load")
         {
             StartCoroutine(LoadSavedScene());
+        }
+        else if (LoadMode == "quit")
+        {
+            Application.Quit();
+            Debug.Log("Quit game");
+            Debug.Log("needs to be testet in compiled game");
         }
     }
 
