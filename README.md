@@ -19,3 +19,4 @@ Game Art:
 Friedeheim
 
 # Feel free to download and test our game! :)
+Simply download the RELEASE folder and run the executable. Have fun!
