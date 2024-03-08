@@ -8,7 +8,7 @@ public class Slimey : MonoBehaviour
     public int waitTimeMax = 20;
     public float radiusAroundHouse = 5f;
     public float radiusAroundPlayer = 0.5f;
-    public float pettingTime = 6f;
+    public float pettingTime = 2f;
     private Vector2 target;
     private bool isMoving = false;
     private bool isPetting = false;

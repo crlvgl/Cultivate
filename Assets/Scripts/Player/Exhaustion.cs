@@ -31,7 +31,7 @@ public class Exhaustion : MonoBehaviour
     [Tooltip("How much the player's speed is reduced by")]
     public int slowdownFactor = 3;
     [Tooltip("How long it takes to recover 1 exhaustion point, in Seconds")]
-    public int timeToRecovery = 1;
+    public float timeToRecovery = 2f;
     public static int recoverViaPetting = 5;
 
     private bool isRecovering = false;

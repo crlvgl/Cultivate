@@ -8,6 +8,8 @@ public class Sacrifice : MonoBehaviour
     public Button Button2;
     private GameObject button1;
     private GameObject button2;
+    private GameObject text1;
+    private GameObject text2;
 
     void Start()
     {
@@ -21,6 +23,10 @@ public class Sacrifice : MonoBehaviour
         button2 = transform.Find("SacrificeButton2").gameObject;
         button1.SetActive(false);
         button2.SetActive(false);
+        text1 = transform.Find("SacrificeText1").gameObject;
+        text2 = transform.Find("SacrificeText2").gameObject;
+        text1.SetActive(false);
+        text2.SetActive(false);
     }
 
     void Update()
@@ -28,13 +34,22 @@ public class Sacrifice : MonoBehaviour
         // Check if the player is close enough to the object
         if (IsPlayerCloseToTheObject())
         {
+            if (Inventory.Pickaxe == 0)
+            {
+                text1.SetActive(true);
+            }
+            else
+            {
+                text1.SetActive(false);
+                text2.SetActive(true);
+            }
             // Show Button1 if Inventory.Pickaxe == 0, otherwise show Button2
             if (Inventory.Wood >= 10 && Inventory.Flower >=50 && Inventory.Pickaxe == 0)
             {
                 button1.SetActive(true);
                 button2.SetActive(false);
             }
-            else if (Inventory.Wood >= 15 && Inventory.Stone >=10 && Inventory.Pickaxe == 1 && Inventory.Relic == 1)
+            else if (Inventory.Wood >= 15 && Inventory.Stone >=10 && Inventory.Pickaxe >= 1 && Inventory.Relic >= 1)
             {
                 button1.SetActive(false);
                 button2.SetActive(true);
