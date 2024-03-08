@@ -115,15 +115,15 @@ public class ClickAgentController : MonoBehaviour
         ManageAnimation();
 
         // Check if any key or mouse button is pressed
-        if (Input.anyKeyDown || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2))
-        {
+      //  if (Input.anyKeyDown || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2))
+        //{
             // Stoppe die laufende Coroutine und starte sie neu.
-            if (timerCoroutine != null)
-            {
-                StopCoroutine(timerCoroutine);
-            }
-            timerCoroutine = StartCoroutine(ButtonPressedTimer());
-        }
+        //    if (timerCoroutine != null)
+         //   {
+          //      StopCoroutine(timerCoroutine);
+          //  }
+          //  timerCoroutine = StartCoroutine(ButtonPressedTimer());
+        //}
 
         if(Inventory.Relic == 1)
         {
@@ -398,8 +398,8 @@ public class ClickAgentController : MonoBehaviour
             position.y >= (centerPoint.y - CameraY) && position.y <= (centerPoint.y + CameraY);
     }
 
-    IEnumerator ButtonPressedTimer()
-    {
+ //   IEnumerator ButtonPressedTimer()
+   // {
        // if (PlayerAiOff == false){
             // Set pressedButton to true and wait for 60 seconds
          //   pressedButton = true;
@@ -419,20 +419,8 @@ public class ClickAgentController : MonoBehaviour
          //       }
 
         //}
-
-        yield return new WaitForSeconds(30);
-        do
-        {
-            // Setze das Ziel und bewege den Agenten.
-            target = new Vector2(Random.Range(-9.1f, 9.1f), Random.Range(-4.9f, 4.9f));
-            MoveAgent();
-
-            // Warte erneut 20 Sekunden.
-            yield return new WaitForSeconds(20);
-
-        } 
-        while (true); // Endlos, bis diese Coroutine explizit gestoppt wird durch das Drücken einer Taste.
-    }
+       
+    //}
 
 
     IEnumerator StartWalkingSoundWithDelay()

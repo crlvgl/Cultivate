@@ -35,7 +35,7 @@ public class Exhaustion : MonoBehaviour
     public static int recoverViaPetting = 5;
 
     private bool isRecovering = false;
-    private bool firstTime = true;
+    public static bool firstTime = true;
 
     private float referenceSpeed;
     private float slowSpeed;
