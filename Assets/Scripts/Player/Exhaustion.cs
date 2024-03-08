@@ -107,8 +107,8 @@ public class Exhaustion : MonoBehaviour
     {
         if (exhaustionPoints <= 0)
         {
-            TreeAnimation.chopExhausted = true;
-            Flower.flowerExhausted = true;
+            TreeAnimation.chopExhausted = false;
+            Flower.flowerExhausted = false;
             if (player_0.activeSelf)
             {
                 player = player_0;
